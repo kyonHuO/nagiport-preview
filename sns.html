@@ -8,13 +8,12 @@
     <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>その投稿は、<br>あなたへの声ですか。</h1><p>同じ名前の別のお店。文脈が足りない短い投稿。<br>まず関連性を確認してから、感情・不満・要望を見渡すために。</p></div>
     <p class="availability-note"><span class="status-pill">実データ解析は未提供</span> モデル選定と品質確認を進める前の開発段階です。料金と無料枠への適用も未決定です。</p>
 <section id="public-data-examples" aria-labelledby="public-data-examples-title" style="overflow-wrap:anywhere">
-<div class="section-heading"><p class="eyebrow">PUBLIC DATA / 実行済みの開発例</p><h2 id="public-data-examples-title">SNS分析の開発例：公開データを使った関連性分類</h2></div>
-<p>宿泊分野に関係する文章かを、開発中のモデルで分類した例です。クラウドワーカーが作成した疑似レビューと、架空の宿泊相談を演じた対話データを使用しています。実際のSNS投稿やNagiportのお客様の声ではありません。</p>
-<p>以下は2026年10月14日に実行したEmbeddingGemma FP32・既存18定義方式の保存結果です。見せ方を説明するために選んだ4件で、実SNSでの精度や導入実績を示すものではありません。特定の店舗・企業との関連性、感情、不満・要望は、この例では判定していません。</p>
-<p>表示の「情報不足」はモデルが返す分類名で、運用上の「判定保留」とは別です。文章は推論に入力した単位の全文を掲載しています。</p>
-<p><a href="#public-data-sources">出典・ライセンスを確認する</a></p>
-<div class="sns-examples">
-<article><div class="example-number">01</div><div><h3>関連あり（F008）</h3><p class="service-note">データの種類：疑似ホテルレビュー</p><p class="example-post" style="white-space:pre-line">別府にある老舗の温泉旅館でした。
+<div class="section-heading"><p class="eyebrow">口コミを整理する、最初の一歩</p><h2 id="public-data-examples-title">たくさんの口コミから、読むべき声を見つけやすく。</h2><p>口コミや投稿が増えると、必要な声を探すだけでも手間がかかります。まず読みたい話題ごとに整理して、人が確認する順番を考えやすくする。それが、この分類で目指していることです。</p></div>
+<div class="public-demo-guide"><h3>たとえば、宿泊についての声を読みたいとき</h3><p>この例で探すのは、ホテル・旅館などの宿泊に関係する文章です。特定のお店への評価や、好評・不評を判定する例ではありません。</p><ol><li><strong>何についての声を読みたいか決める</strong><br>今回は「宿泊」がテーマです。</li><li><strong>文章を、テーマとの関係で分ける</strong><br>宿泊の話か、別の話題か、文脈を確認したいかを整理します。</li><li><strong>気になる声と、判断が難しい声を人が読む</strong><br>分類は確認の手がかりです。機械の出力をそのまま正解とせず、必要に応じて見直します。</li></ol></div>
+<div class="public-label-guide"><h3>このページでの分類の意味</h3><dl><div><dt>関連あり</dt><dd>宿泊の話題として読む候補</dd></div><div><dt>無関係</dt><dd>今回探している宿泊の話題ではない文章</dd></div><div><dt>情報不足</dt><dd>前後の文脈を確認したい文章。モデルが、この文章だけでは判断材料が足りないと分類したものです。</dd></div></dl><p class="service-note">表示の「情報不足」はモデルが返す分類名で、運用上の「判定保留」とは別です。人の判断と食い違う場合もあります。</p></div>
+<div class="public-example-intro"><h3>文章が、どう整理されるか見てみる</h3><p>以下は公開データを使った、開発中のモデルの実行例です。クラウドワーカーが作成した疑似レビューと、架空の宿泊相談を演じた対話データを使用しています。実際のSNS投稿やNagiportのお客様の声ではありません。</p><p class="service-note">見せ方を説明するために選んだ4件です。実SNSでの精度や導入実績を示すものではありません。文章は入力した単位の全文を掲載しています。</p><p><a href="#public-data-sources">出典・ライセンスを見る</a></p></div>
+<div class="public-review-list">
+<article class="public-review-card"><header><span class="status-pill">疑似ホテルレビュー</span><h4>宿泊の体験を伝える声</h4></header><blockquote class="public-review-text">別府にある老舗の温泉旅館でした。
 桜が咲く頃に、大人2名で宿泊しました。
 泉質がとてもよく、長旅の疲れが癒やされました。
 部屋からの景観もよく、満開の桜を見ることができました。
@@ -23,13 +22,14 @@
 夕食はバイキング形式でしたが、とても豪華で満足度が高かったです。
 朝食は部屋でのんびり食べることができ良かったです。
 部屋から見る夜景もきれいでした。
-チェックアウトの際のお見送りも嬉しく感じました。</p><p>モデルの出力：関連あり</p></div></article>
-<article><div class="example-number">02</div><div><h3>無関係（F007）</h3><p class="service-note">データの種類：疑似観光地レビュー</p><p class="example-post" style="white-space:pre-line">愛知県にある●●民族館は、歴史も分かるし、詳しい展示などオススメです。
+チェックアウトの際のお見送りも嬉しく感じました。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>関連あり</strong></p><p>宿泊の話題として読む候補</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">疑似観光地レビュー</span><h4>観光施設についての声</h4></header><blockquote class="public-review-text">愛知県にある●●民族館は、歴史も分かるし、詳しい展示などオススメです。
 名古屋駅からバスが直行便で出ているのでアクセスもいいですし、無料バスも月に1回あるのは穴場です。
-私なら隣の●●民族の料理を出すレストランも寄るのが流れです。</p><p>モデルの出力：無関係（宿泊分野に対する分類）</p></div></article>
-<article><div class="example-number">03</div><div><h3>情報不足（F004）</h3><p class="service-note">データの種類：架空の宿泊相談の顧客発話</p><p class="example-post" style="white-space:pre-line">はい、禁煙で大丈夫です。</p><p>モデルの出力：情報不足</p></div></article>
-<article><div class="example-number">04</div><div><h3>見直しが必要な出力（F074）</h3><p class="service-note">データの種類：架空の宿泊相談の顧客発話</p><p class="example-post" style="white-space:pre-line">駅から宿までのバスがあると助かります。</p><p>モデルの出力：情報不足</p><p>比較用のAI暫定ラベル：関連あり</p><p>確認コメント：宿までの移動条件を述べていますが、モデルは「情報不足」と分類しました。出力をそのまま正解として扱わず、確認が必要な例です。比較用ラベルもAIが作成したもので、人による正解確認は未実施です。このコメントはモデルが生成した判定理由ではありません。</p></div></article>
+私なら隣の●●民族の料理を出すレストランも寄るのが流れです。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>無関係</strong></p><p>今回探している宿泊の話題ではない文章</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">架空の宿泊相談</span><h4>ひと言だけでは、文脈が足りない声</h4></header><blockquote class="public-review-text">はい、禁煙で大丈夫です。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>情報不足</strong></p><p>前後の文脈を確認したい文章</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">架空の宿泊相談</span><h4>確認が必要だった例</h4></header><blockquote class="public-review-text">駅から宿までのバスがあると助かります。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>情報不足</strong></p><p>モデルの出力と、比較用のラベルが食い違いました</p></div><div class="public-review-warning"><p><strong>宿泊の話に見えても、確認が必要です</strong></p><p>比較用のAI暫定ラベル：関連あり</p><p>確認コメント：宿までの移動条件を述べていますが、モデルは「情報不足」と分類しました。出力をそのまま正解として扱わず、確認が必要な例です。比較用ラベルもAIが作成したもので、人による正解確認は未実施です。このコメントはモデルが生成した判定理由ではありません。</p></div></article>
 </div>
+<details class="public-method"><summary>分類方法と元データの情報を見る</summary><p>2026年10月14日に実行したEmbeddingGemma FP32・既存18定義方式の保存結果です。特定の店舗・企業との関連性、感情、不満・要望は、この例では判定していません。</p><p>表示順の記録ID：F008、F007、F004、F074。出力は順に「関連あり」「無関係」「情報不足」「情報不足」です。</p></details>
 <div id="public-data-sources" class="service-panel"><h3>出典・ライセンス</h3>
 <p>例1・2：Yuta Hayashibe / Megagon Labs, Quasi Japanese Reviews（2023）。クラウドワーカー作成の疑似レビュー。CC BY 4.0。<br><a href="https://github.com/megagonlabs/quasi_japanese_reviews/tree/2a69131592b85d30b33ebb99860b101e9f3c8d27">出典：Quasi Japanese Reviews</a><br>原データ：例1 quasi_japanese_reviwes.hotel.00217、例2 quasi_japanese_reviwes.spot.00089。</p>
 <p>例3・4：Yuta Hayashibe / Megagon Labs, Accommodation Search Dialog Corpus。関連文献：Self-Contained Utterance Description Corpus for Japanese Dialog, LREC 2022, pp.1249–1255。架空の宿泊相談サービスでの役割対話。CC BY 4.0。<br><a href="https://github.com/megagonlabs/asdc/tree/f37d6575c73602adcb8ae3687520726793baa672">出典：Accommodation Search Dialog Corpus</a><br>原データ：例3 data/main/dialog/text/102.tsv の14行目、例4 data/main/dialog/text/174.tsv の16行目。</p>
@@ -50,4 +50,5 @@
   </main><footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="demo.html">口コミのデモ</a></footer>
 </body>
 </html>
+
 
