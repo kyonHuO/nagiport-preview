@@ -7,6 +7,35 @@
   <main id="main" class="service-main">
     <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>その投稿は、<br>あなたへの声ですか。</h1><p>同じ名前の別のお店。文脈が足りない短い投稿。<br>まず関連性を確認してから、感情・不満・要望を見渡すために。</p></div>
     <p class="availability-note"><span class="status-pill">実データ解析は未提供</span> モデル選定と品質確認を進める前の開発段階です。料金と無料枠への適用も未決定です。</p>
+<section id="public-data-examples" aria-labelledby="public-data-examples-title" style="overflow-wrap:anywhere">
+<div class="section-heading"><p class="eyebrow">PUBLIC DATA / 実行済みの開発例</p><h2 id="public-data-examples-title">SNS分析の開発例：公開データを使った関連性分類</h2></div>
+<p>宿泊分野に関係する文章かを、開発中のモデルで分類した例です。クラウドワーカーが作成した疑似レビューと、架空の宿泊相談を演じた対話データを使用しています。実際のSNS投稿やNagiportのお客様の声ではありません。</p>
+<p>以下は2026年10月14日に実行したEmbeddingGemma FP32・既存18定義方式の保存結果です。見せ方を説明するために選んだ4件で、実SNSでの精度や導入実績を示すものではありません。特定の店舗・企業との関連性、感情、不満・要望は、この例では判定していません。</p>
+<p>表示の「情報不足」はモデルが返す分類名で、運用上の「判定保留」とは別です。文章は推論に入力した単位の全文を掲載しています。</p>
+<p><a href="#public-data-sources">出典・ライセンスを確認する</a></p>
+<div class="sns-examples">
+<article><div class="example-number">01</div><div><h3>関連あり（F008）</h3><p class="service-note">データの種類：疑似ホテルレビュー</p><p class="example-post" style="white-space:pre-line">別府にある老舗の温泉旅館でした。
+桜が咲く頃に、大人2名で宿泊しました。
+泉質がとてもよく、長旅の疲れが癒やされました。
+部屋からの景観もよく、満開の桜を見ることができました。
+スタッフの方の対応はとても親切でした。
+部屋は隅々まできれいに清掃されており、快適に過ごせました
+夕食はバイキング形式でしたが、とても豪華で満足度が高かったです。
+朝食は部屋でのんびり食べることができ良かったです。
+部屋から見る夜景もきれいでした。
+チェックアウトの際のお見送りも嬉しく感じました。</p><p>モデルの出力：関連あり</p></div></article>
+<article><div class="example-number">02</div><div><h3>無関係（F007）</h3><p class="service-note">データの種類：疑似観光地レビュー</p><p class="example-post" style="white-space:pre-line">愛知県にある●●民族館は、歴史も分かるし、詳しい展示などオススメです。
+名古屋駅からバスが直行便で出ているのでアクセスもいいですし、無料バスも月に1回あるのは穴場です。
+私なら隣の●●民族の料理を出すレストランも寄るのが流れです。</p><p>モデルの出力：無関係（宿泊分野に対する分類）</p></div></article>
+<article><div class="example-number">03</div><div><h3>情報不足（F004）</h3><p class="service-note">データの種類：架空の宿泊相談の顧客発話</p><p class="example-post" style="white-space:pre-line">はい、禁煙で大丈夫です。</p><p>モデルの出力：情報不足</p></div></article>
+<article><div class="example-number">04</div><div><h3>見直しが必要な出力（F074）</h3><p class="service-note">データの種類：架空の宿泊相談の顧客発話</p><p class="example-post" style="white-space:pre-line">駅から宿までのバスがあると助かります。</p><p>モデルの出力：情報不足</p><p>比較用のAI暫定ラベル：関連あり</p><p>確認コメント：宿までの移動条件を述べていますが、モデルは「情報不足」と分類しました。出力をそのまま正解として扱わず、確認が必要な例です。比較用ラベルもAIが作成したもので、人による正解確認は未実施です。このコメントはモデルが生成した判定理由ではありません。</p></div></article>
+</div>
+<div id="public-data-sources" class="service-panel"><h3>出典・ライセンス</h3>
+<p>例1・2：Yuta Hayashibe / Megagon Labs, Quasi Japanese Reviews（2023）。クラウドワーカー作成の疑似レビュー。CC BY 4.0。<br><a href="https://github.com/megagonlabs/quasi_japanese_reviews/tree/2a69131592b85d30b33ebb99860b101e9f3c8d27">出典：Quasi Japanese Reviews</a><br>原データ：例1 quasi_japanese_reviwes.hotel.00217、例2 quasi_japanese_reviwes.spot.00089。</p>
+<p>例3・4：Yuta Hayashibe / Megagon Labs, Accommodation Search Dialog Corpus。関連文献：Self-Contained Utterance Description Corpus for Japanese Dialog, LREC 2022, pp.1249–1255。架空の宿泊相談サービスでの役割対話。CC BY 4.0。<br><a href="https://github.com/megagonlabs/asdc/tree/f37d6575c73602adcb8ae3687520726793baa672">出典：Accommodation Search Dialog Corpus</a><br>原データ：例3 data/main/dialog/text/102.tsv の14行目、例4 data/main/dialog/text/174.tsv の16行目。</p>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">ライセンス：CC BY 4.0</a><br>加工：元データからレビュー単位・顧客発話単位で選び、評価入力と同じ単位で掲載しています。対話の前後の文脈と話者・時刻などの列は含めていません。分類結果・確認コメントはNagiport側で追加しています。掲載本文を宣伝用に書き換えていません。原著者・配布元によるNagiportへの推奨・保証を意味しません。元データはライセンスの無保証条件に従います。</p>
+</div>
+</section>
     <section aria-labelledby="example-title"><div class="section-heading"><p class="eyebrow">WORKFLOW EXAMPLE</p><h2 id="example-title">確認の流れ</h2><p>架空の喫茶店「凪」の例です。以下は説明用に人が作成した例示で、実際の分類結果・実績ではありません。</p></div>
       <div class="target-example"><span class="status-pill">架空の設定例</span><h3>喫茶 凪 / 港町エリア</h3><p>対象の名前だけでなく、別名、地域、事業説明、判断の例を組み合わせて設定します。</p></div>
       <div class="sns-examples">
@@ -21,3 +50,4 @@
   </main><footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="demo.html">口コミのデモ</a></footer>
 </body>
 </html>
+
