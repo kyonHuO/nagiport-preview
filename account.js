@@ -209,14 +209,15 @@
     }
   }
 
-  function renderDashboard(user) {
+  function renderDashboard(user, usage) {
     if (el("dash-name")) el("dash-name").textContent = user.name || user.email || "お客様";
     if (el("dash-email")) el("dash-email").textContent = user.email || "-";
     if (el("dash-created")) el("dash-created").textContent = formatDate(user.created_at);
-    var used = typeof user.used_today === "number" ? user.used_today : 0;
-    var limit = typeof user.daily_limit === "number" ? user.daily_limit : 100;
-    if (el("usage-text")) el("usage-text").textContent = used + " / " + limit + " 行（本日）";
-    if (el("usage-bar")) el("usage-bar").style.width = Math.min(100, (used / limit) * 100) + "%";
+    if (usage) {
+      if (el("usage-rows")) el("usage-rows").textContent = (usage.rows || 0) + " 行";
+      if (el("usage-jobs")) el("usage-jobs").textContent = (usage.jobs || 0) + " 件";
+      if (el("usage-period")) el("usage-period").textContent = usage.period || "-";
+    }
   }
 
   function initDashboard() {
@@ -250,7 +251,7 @@
           setStatus(el("dash-error"), "サーバーに接続できませんでした。通信状況を確認して再読み込みしてください。", "error");
           return;
         }
-        renderDashboard(result.data.user);
+        renderDashboard(result.data.user, result.data.usage);
       })
       .catch(function () {
         setStatus(el("dash-error"), "サーバーに接続できませんでした。通信状況を確認して再読み込みしてください。", "error");

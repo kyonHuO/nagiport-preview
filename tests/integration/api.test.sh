@@ -49,6 +49,7 @@ check "create job A (id present)" "yes" "$([ -n "$JOB_ID" ] && echo yes || echo 
 DUP_ID=$($CURL -X POST "$BASE/api/jobs" -H 'content-type: application/json' -H "origin: $BASE" -b "$J/a" -d "$RESULTS" | jsonid)
 check "double save with same token returns same id" "$JOB_ID" "$DUP_ID"
 check "double save did not create a second job (list=1)" 1 "$($CURL "$BASE/api/jobs" -H "origin: $BASE" -b "$J/a" | jsoncount)"
+check "me includes own usage rows (>=2)" "yes" "$($CURL "$BASE/api/auth/me" -H "origin: $BASE" -b "$J/a" | python3 -c 'import sys,json;u=json.load(sys.stdin).get("usage",{});print("yes" if u.get("rows",0)>=2 else "no")')"
 check "job detail A (200)" 200 "$(code "$BASE/api/jobs/$JOB_ID" -H "origin: $BASE" -b "$J/a")"
 check "non-JSON body rejected (415)" 415 "$(code -X POST "$BASE/api/jobs" -H 'content-type: text/plain' -H "origin: $BASE" -b "$J/a" -d 'not json')"
 RESULTS_DIFF='{"client_token":"'"$TOKEN"'","results":[{"id":9,"text":"different content","category":"hold"}]}'
