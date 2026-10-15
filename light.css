@@ -186,3 +186,52 @@ body.light .pipe-sub,
 body.light .cat-sample {
   color: #4a4552;
 }
+
+body.light .price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 12px;
+  font-size: 13px;
+}
+
+body.light .price-table caption {
+  text-align: left;
+  color: #6b6474;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+body.light .price-table th,
+body.light .price-table td {
+  border: 1px solid #e0d8ea;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+body.light .price-table thead th {
+  background: #f3effa;
+  color: #3a3543;
+  font-weight: 600;
+}
+
+body.light .price-table tbody th {
+  font-weight: 500;
+  color: #3a3543;
+}
+
+body.light .service-panel input:not([type=checkbox]),
+body.light .service-panel select {
+  background: #ffffff;
+  color: #26232d;
+  border-color: #d9d0e4;
+}
+
+body.light .price-result output {
+  color: #7961ba;
+}
+
+body.light .service-panel button {
+  background: #efe7f7;
+  color: #4a2f78;
+  border-color: #cdb6e6;
+}
