@@ -37,8 +37,16 @@ jobs:
       - name: Install puppeteer-core
         run: npm install --no-save --no-audit --no-fund puppeteer-core@23
 
+      - name: Set up Chrome
+        id: chrome
+        uses: browser-actions/setup-chrome@v1
+
       - name: Screen test (save flow)
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: BASE=https://127.0.0.1:8790 node tests/e2e/classify.screen.cjs
 
       - name: Screen test (UI details)
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: BASE=https://127.0.0.1:8790 node tests/e2e/account.ui.cjs
