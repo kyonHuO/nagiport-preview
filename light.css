@@ -170,3 +170,19 @@ body.light .home-flow-steps p {
 body.light .home-flow .flow-number {
   color: #7a6b8f;
 }
+
+body.light .pipe-node,
+body.light .cat-card {
+  border-color: #e0d8ea;
+  background: #faf9fc;
+}
+
+body.light .pipe-name,
+body.light .cat-name {
+  color: #1f1c26;
+}
+
+body.light .pipe-sub,
+body.light .cat-sample {
+  color: #4a4552;
+}
