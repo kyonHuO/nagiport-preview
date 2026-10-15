@@ -25,6 +25,9 @@ jobs:
             npx --yes wrangler@latest d1 execute nagiport-accounts --local --file="migrations/$f.sql"
           done
 
+      - name: Create local .dev.vars
+        run: echo "ADMIN_TOKEN=ci-admin-token" > .dev.vars
+
       - name: Start Pages dev (workerd + local D1, https)
         run: |
           npx --yes wrangler@latest pages dev . --d1 DB=REPLACE_WITH_D1_DATABASE_ID --local-protocol https --port 8790 > /tmp/pages-dev.log 2>&1 &
@@ -32,7 +35,7 @@ jobs:
           tail -3 /tmp/pages-dev.log
 
       - name: API integration tests
-        run: RESET_D1=1 BASE=https://127.0.0.1:8790 bash tests/integration/api.test.sh
+        run: RESET_D1=1 ADMIN_TOKEN=ci-admin-token BASE=https://127.0.0.1:8790 bash tests/integration/api.test.sh
 
       - name: Install puppeteer-core
         run: npm install --no-save --no-audit --no-fund puppeteer-core@23

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja" class="landing-document">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>利用状況（管理者）｜Nagiport</title>
+  <link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css">
+</head>
+<body class="landing service light">
+  <main id="main" class="service-main simulation-main">
+    <div class="section-heading"><p class="eyebrow">ADMIN</p><h1>利用状況</h1><p>社内専用です。顧客には表示しません。アクセストークンを入力してください。</p></div>
+    <div class="service-panel">
+      <label for="token">管理者トークン</label>
+      <input id="token" type="password" autocomplete="off">
+      <label for="period">対象月（YYYY-MM、空欄で全期間）</label>
+      <input id="period" type="text" inputmode="numeric" placeholder="2026-10" autocomplete="off">
+      <button id="load" type="button" class="primary">表示する</button>
+      <p id="admin-status" class="service-note" role="status" aria-live="polite"></p>
+    </div>
+    <section id="result" hidden>
+      <div class="section-heading"><h2>利用量</h2></div>
+      <table class="price-table">
+        <thead><tr><th scope="col">メールアドレス</th><th scope="col">保存ジョブ数</th><th scope="col">分類行数</th><th scope="col">最終利用</th></tr></thead>
+        <tbody id="usage-rows"></tbody>
+      </table>
+    </section>
+  </main>
+  <script>
+    (function () {
+      function fmt(ms) { return ms ? new Date(ms).toLocaleString("ja-JP") : "-"; }
+      document.getElementById("load").addEventListener("click", function () {
+        var token = document.getElementById("token").value;
+        var period = document.getElementById("period").value.trim();
+        var status = document.getElementById("admin-status");
+        status.textContent = "読み込んでいます…";
+        fetch("/api/admin/usage", { headers: { "x-admin-token": token, "x-usage-period": period } })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, d: d }; }); })
+          .then(function (res) {
+            if (!res.ok) { status.textContent = res.d.error || "取得に失敗しました。"; return; }
+            var body = document.getElementById("usage-rows");
+            body.replaceChildren();
+            (res.d.usage || []).forEach(function (u) {
+              var tr = document.createElement("tr");
+              [u.email, u.jobs, u.rows, fmt(u.last)].forEach(function (v, i) {
+                var cell = document.createElement(i === 0 ? "th" : "td");
+                if (i === 0) cell.setAttribute("scope", "row");
+                cell.textContent = String(v);
+                tr.append(cell);
+              });
+              body.append(tr);
+            });
+            document.getElementById("result").hidden = false;
+            status.textContent = (res.d.usage || []).length + " 件のアカウント";
+          })
+          .catch(function () { status.textContent = "通信に失敗しました。"; });
+      });
+    })();
+  </script>
+</body>
+</html>

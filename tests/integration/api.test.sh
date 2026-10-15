@@ -94,6 +94,14 @@ rm -rf "$TMPD"
 check "concurrent limit: at most 20 allowed" "yes" "$([ "$C401" -le 20 ] && echo yes || echo no)"
 check "concurrent limit: at least 20 blocked" "yes" "$([ "$C429" -ge 20 ] && echo yes || echo no)"
 
+if [ -n "${ADMIN_TOKEN:-}" ]; then
+  check "admin usage no token (401)" 401 "$(code "$BASE/api/admin/usage" -H "origin: $BASE")"
+  check "admin usage bad token (401)" 401 "$(code "$BASE/api/admin/usage" -H "origin: $BASE" -H 'x-admin-token: wrong')"
+  check "admin usage with token (200)" 200 "$(code "$BASE/api/admin/usage" -H "origin: $BASE" -H "x-admin-token: $ADMIN_TOKEN")"
+else
+  echo "SKIP  admin usage tests (set ADMIN_TOKEN and a local .dev.vars)"
+fi
+
 RL=""
 for _ in $(seq 1 25); do
   c="$(code -X POST "$BASE/api/auth/login" -H 'content-type: application/json' -H "origin: $BASE" -d "{\"email\":\"$EMAIL_A\",\"password\":\"wrongpass1\"}")"
