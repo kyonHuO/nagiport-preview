@@ -241,3 +241,20 @@ body.light .home-service-links a {
   font-size: 13px;
   font-weight: 500;
 }
+
+body.light .demo-video {
+  margin: 26px 0;
+}
+
+body.light .demo-video video {
+  width: 100%;
+  max-width: 960px;
+  display: block;
+  border: 1px solid #e0d8ea;
+  border-radius: 12px;
+  background: #fff;
+}
+
+body.light .demo-video .service-note {
+  margin-top: 10px;
+}
