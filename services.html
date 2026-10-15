@@ -9,15 +9,31 @@
 </head>
 <body class="landing service">
   <a class="skip-link" href="#main">本文へ移動</a>
-  <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html" aria-current="page">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html">お客様ページ</a></nav></header>
+  <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html" aria-current="page">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html">お客様ページ</a></nav></header>
   <main id="main" class="service-main">
-    <div class="section-heading"><p class="eyebrow">SERVICES</p><h1>声を整理して、<br>読む時間を、考える時間に。</h1><p>お手元の口コミや投稿をCSVで整理し、確認しやすい一覧にするサービスを準備しています。</p></div>
+    <div class="section-heading"><p class="eyebrow">SERVICES</p><h1>口コミを分類して、<br>確認の時間を減らす。</h1><p>お手元の口コミや投稿をCSVで整理し、確認しやすい一覧にするサービスを準備しています。</p></div>
     <p class="availability-note"><span class="status-pill">提供準備中</span> 現在は案内とデモの公開段階です。注文・支払い・顧客データの受付は開始していません。</p>
+    <section aria-labelledby="issues-title">
+      <div class="section-heading"><h2 id="issues-title">こんなお悩みはありませんか？</h2></div>
+      <div class="service-grid">
+        <article class="service-panel"><h3>口コミを全部読む時間がない</h3><p>件数が多く、1件ずつ目を通すのが負担になっている。</p></article>
+        <article class="service-panel"><h3>見るべき声が分からない</h3><p>改善につながる要望と、一回きりの感想が混ざっていて、優先度を決められない。</p></article>
+        <article class="service-panel"><h3>生成AIでの分類はコストが高い</h3><p>件数が多いと、APIの利用料がかさむ。</p></article>
+      </div>
+    </section>
+    <section aria-labelledby="solve-title">
+      <div class="section-heading"><h2 id="solve-title">Nagiportでできること</h2></div>
+      <div class="service-grid">
+        <article class="service-panel"><h3>CSVを取り込んで分類する</h3><p>口コミCSVの本文列を指定すると、好意的・否定的・賛否混在・判定保留に分類します。</p></article>
+        <article class="service-panel"><h3>結果を一覧で確認する</h3><p>元の文章と分類、保留の理由を一覧で確認できます。結果は人が見直す前提です。</p></article>
+        <article class="service-panel"><h3>結果をCSVで保存する</h3><p>分類結果はCSVでダウンロードできます。アカウントに保存すると、再ログイン後も履歴から取得できます。</p></article>
+      </div>
+    </section>
     <div class="service-grid">
       <article class="service-panel"><p class="eyebrow">01 / REVIEW</p><h2>口コミCSV分類</h2><p>好意的・否定的・賛否混在・判定保留などに整理。内容が足りない声は、無理に決めず確認のために残します。</p><ul><li>本文列を選んで分類</li><li>元のID・本文・行順を保持</li><li>用途に合わせた2〜10分類の設定も準備</li></ul><a href="demo.html">口コミのデモを見る ↗</a></article>
       <article class="service-panel"><p class="eyebrow">02 / SOCIAL</p><h2>SNS投稿分析 <span class="status-pill">開発中</span></h2><p>まず「自分の店舗・商品に関係する投稿か」を確認。そのうえで、感情・不満・要望を分けて整理する機能です。</p><ul><li>同名の別店舗・別地域を見分けるための設定</li><li>無関係候補・保留も全件一覧に保持</li><li>根拠の確認と、人による見直しを想定</li></ul><a href="sns.html">SNS分析の内容を見る ↗</a></article>
     </div>
-    <section aria-labelledby="flow-title"><div class="section-heading"><p class="eyebrow">HOW IT WILL WORK</p><h2 id="flow-title">提供開始後の流れ</h2><p>用途と条件の確認から、結果の見直しまで。</p></div><ol class="flow-grid"><li><span>01</span><h3>用途と条件を確認</h3><p>本文列、分類基準、件数、金額、納期を確認します。</p></li><li><span>02</span><h3>CSVをお預かり</h3><p>提供開始後、利用条件に合意のうえでデータをお預かりします。</p></li><li><span>03</span><h3>結果を確認</h3><p>分類結果と保留を一覧に。機械の判定には人の確認が必要です。</p></li></ol></section>
+    <section aria-labelledby="flow-title"><div class="section-heading"><p class="eyebrow">HOW IT WORKS</p><h2 id="flow-title">分類結果が出るまで</h2><p>用途と条件の確認から、結果の見直しまで。</p></div><ol class="flow-grid"><li><span>01</span><h3>用途と条件を確認</h3><p>本文列、分類基準、件数、金額、納期を確認します。</p></li><li><span>02</span><h3>CSVをお預かり</h3><p>提供開始後、利用条件に合意のうえでデータをお預かりします。</p></li><li><span>03</span><h3>結果を確認</h3><p>分類結果と保留を一覧に。機械の判定には人の確認が必要です。</p></li></ol></section>
     <section aria-labelledby="trial-title"><div class="section-heading"><p class="eyebrow">TRIAL / 準備中</p><h2 id="trial-title">まずは、少量から。</h2></div><div class="trial-policy"><p class="trial-number">100<span>データ行 / 回</span></p><div><h3>口コミ分類の無料試用を準備しています</h3><p>1アカウントにつき1日1回。日本時間0時にリセットし、処理失敗は回数に含めない方針です。</p><p class="service-note">登録・無料試用は未提供です。有料注文との関係と、SNS分析への適用は未決定です。</p></div></div></section>
     <section aria-labelledby="faq-title"><div class="section-heading"><h2 id="faq-title">利用前に知っておきたいこと</h2></div><div class="service-faq"><details><summary>料金は決まっていますか？</summary><p>口コミ分類には<a href="estimate.html">公開済みの参考料金</a>があります。正式な請求額は条件を確認してから決定します。SNS分析の料金は未決定です。</p></details><details><summary>SNSの投稿を自動で集められますか？</summary><p>当初はお手元の投稿本文付きCSVが対象です。SNSの自動収集、画像解析、外部リンクの取得、監視、自動返信は対象外です。</p></details><details><summary>どんなデータでも使えますか？</summary><p>利用する権限のあるデータが対象です。事前相談のメールには実データ、個人情報、機密情報を添付しないでください。保存・削除の条件は提供開始前にご案内します。</p></details><details><summary>分類は正確ですか？</summary><p>分類結果は、元の文章とあわせて確認してご活用ください。文脈によって誤分類や判定保留が生じるため、人による見直しを前提としています。SNS分析の提供状況は専用ページでご案内します。</p></details></div></section>
     <section class="contact-panel" aria-labelledby="contact-title"><h2 id="contact-title">用途についての事前相談</h2><p>「何件くらい、どんな内容を分けたいか」をお知らせください。メールアプリが開きます。</p><a class="primary service-cta" href="mailto:nagiport.contact@gmail.com">事前相談する <span aria-hidden="true">↗</span></a><p class="service-note">ファイルは添付せず、用途の概要だけをお送りください。</p></section>
