@@ -1,0 +1,85 @@
+/* Motion and inline-diagram styles. Respects prefers-reduced-motion. */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.diagram {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 8px 0 0;
+}
+
+.diagram .node rect {
+  fill: #19171f;
+  stroke: #4a3956;
+}
+
+.diagram .node.accent rect {
+  stroke: #7a63a8;
+}
+
+.diagram text {
+  fill: #cfc6d8;
+  font: 12px var(--mono);
+}
+
+.diagram text.dn {
+  fill: #f0edf4;
+  font-size: 13px;
+}
+
+.diagram text.dm {
+  fill: #9d90ab;
+  font-size: 10px;
+}
+
+.diagram .dash-arrow {
+  fill: none;
+  stroke: #8d70c8;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  animation: dashmove 1.2s linear infinite;
+}
+
+@keyframes dashmove {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.status-dot {
+  animation: dotpulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dotpulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .js .reveal,
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .diagram .dash-arrow,
+  .status-dot {
+    animation: none;
+  }
+}

@@ -9,7 +9,7 @@
   <title>口コミ・SNS分類｜Nagiport</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="service.css">
+  <link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css">
 </head>
 <body class="landing home-refined">
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -35,10 +35,18 @@
         <li><span class="flow-number">02 / ORGANIZE</span><h3>内容ごとに分類する</h3><p><span class="sample-label">好意的</span> などに分ける</p></li>
         <li><span class="flow-number">03 / REVIEW</span><h3>結果を確認する</h3><p>元の文章とあわせて一覧を見直し、次の対応を決める。</p></li>
       </ol>
+      <svg class="diagram reveal" viewBox="0 0 900 170" role="img" aria-label="CSVを取り込み、ブラウザ内で分類し、一覧とCSVで確認する流れ">
+        <g class="node"><rect x="10" y="40" width="240" height="90" rx="10"/><text class="dn" x="130" y="78" text-anchor="middle">CSV</text><text class="dm" x="130" y="102" text-anchor="middle">本文の列を指定</text></g>
+        <path class="dash-arrow" d="M255 85 H360"/>
+        <g class="node accent"><rect x="365" y="40" width="240" height="90" rx="10"/><text class="dn" x="485" y="78" text-anchor="middle">分類</text><text class="dm" x="485" y="102" text-anchor="middle">ブラウザ内で実行</text></g>
+        <path class="dash-arrow" d="M610 85 H715"/>
+        <g class="node"><rect x="720" y="40" width="170" height="90" rx="10"/><text class="dn" x="805" y="78" text-anchor="middle">一覧・CSV</text><text class="dm" x="805" y="102" text-anchor="middle">保存も可能</text></g>
+      </svg>
       <a class="home-flow-link" href="demo.html">動画でイメージを見る <span aria-hidden="true">↗</span></a>
     </section>
   </main>
   <footer class="landing-footer"><span class="micro">NAGIPORT</span><nav class="footer-nav" aria-label="サイト"><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a><a class="legal-link" href="usecases.html">活用シーン</a><a class="legal-link" href="flow.html">ご利用の流れ</a><a class="legal-link" href="faq.html">よくある質問</a><a class="legal-link" href="data-policy.html">データの取り扱い</a><a class="legal-link" href="about.html">運営者情報</a><a class="legal-link" href="contact.html">お問い合わせ</a></nav></footer>
+  <script src="motion.js"></script>
 </body>
 </html>
 
