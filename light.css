@@ -149,3 +149,24 @@ body.light .trial-number {
 body.light .availability-note .status-pill {
   background: #efe7f7;
 }
+
+body.light .home-flow {
+  border-top-color: #e8e4ed;
+}
+
+body.light .home-flow-steps li {
+  background: #faf9fc;
+  border-color: #e6e1ec;
+}
+
+body.light .home-flow h3 {
+  color: #1f1c26;
+}
+
+body.light .home-flow-steps p {
+  color: #4a4552;
+}
+
+body.light .home-flow .flow-number {
+  color: #7a6b8f;
+}
