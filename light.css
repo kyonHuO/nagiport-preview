@@ -1,0 +1,151 @@
+/* Light marketing theme, opt-in via body.light. App pages keep the dark UI. */
+
+html:has(body.light) {
+  background: #ffffff;
+  color-scheme: light;
+}
+
+body.light {
+  background: #ffffff;
+  color: #26232d;
+}
+
+body.light .landing {
+  background: #ffffff;
+  border-color: #e8e4ed;
+}
+
+body.light .landing-header {
+  border-bottom-color: #e8e4ed;
+}
+
+body.light .identity,
+body.light .identity small {
+  color: #26232d;
+}
+
+body.light .identity small {
+  color: #8b8494;
+}
+
+body.light .site-nav a {
+  color: #5b5566;
+}
+
+body.light .site-nav a[aria-current="page"],
+body.light .site-nav a:hover {
+  color: #26232d;
+}
+
+body.light h1,
+body.light h2,
+body.light h3 {
+  color: #1f1c26;
+}
+
+body.light p,
+body.light li {
+  color: #46414f;
+}
+
+body.light .eyebrow {
+  color: #7a6b8f;
+}
+
+body.light .section-heading h2,
+body.light .section-heading h1 {
+  color: #1f1c26;
+}
+
+body.light .section-heading > p:last-child {
+  color: #5b5566;
+}
+
+body.light .hero-copy h1 {
+  color: #1f1c26;
+}
+
+body.light .hero-description {
+  color: #4a4552;
+}
+
+body.light .primary {
+  background: #7961ba;
+  color: #ffffff;
+}
+
+body.light .primary:hover {
+  background: #6a52ab;
+}
+
+body.light .home-contact,
+body.light .service-panel a,
+body.light .legal-link {
+  color: #5b3f86;
+}
+
+body.light .service-panel,
+body.light .trial-policy,
+body.light .contact-panel,
+body.light .home-flow-steps > li {
+  background: #faf9fc;
+  border-color: #e6e1ec;
+}
+
+body.light .service-grid h2,
+body.light .service-grid h3 {
+  color: #1f1c26;
+}
+
+body.light .service-grid ul,
+body.light .service-main ul {
+  color: #4a4552;
+}
+
+body.light .flow-grid > li > span {
+  color: #7a6b8f;
+}
+
+body.light .landing-footer {
+  border-top-color: #e8e4ed;
+  color: #6b6474;
+}
+
+body.light .status-pill,
+body.light .availability-note {
+  color: #5b3f86;
+  border-color: #cbb8e4;
+}
+
+body.light .service-faq details,
+body.light .technical-details {
+  border-color: #e6e1ec;
+}
+
+body.light .availability-note {
+  background: #faf7fd;
+  border-color: #e0d3ee;
+  color: #46414f;
+}
+
+body.light .status-pill {
+  color: #6a3fa0;
+  border-color: #cdb6e6;
+}
+
+body.light .service-note,
+body.light .fine-print {
+  color: #6b6474;
+}
+
+body.light .service-faq details {
+  border-bottom-color: #e6e1ec;
+}
+
+body.light .trial-number {
+  color: #6a4f96;
+}
+
+body.light .availability-note .status-pill {
+  background: #efe7f7;
+}
