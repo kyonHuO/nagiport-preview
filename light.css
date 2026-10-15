@@ -235,3 +235,9 @@ body.light .service-panel button {
   color: #4a2f78;
   border-color: #cdb6e6;
 }
+
+body.light .home-service-links a {
+  color: #5b3f86;
+  font-size: 13px;
+  font-weight: 500;
+}
