@@ -46,7 +46,7 @@
 
     <details class="technical-details"><summary>分類方法・保存について</summary><div class="details-body"><p>文章の意味を数値化する分類エンジンを、ブラウザ内で実行します。文字を768次元のベクトルに変換し、分類ごとに用意した日本語・英語の例文の平均ベクトルと、コサイン類似度を比較します。生成AIの回答や、口コミ専用に学習した分類器ではありません。</p><ul><li>好意的：満足、便利、使いやすいなど</li><li>否定的：故障、不満、使いづらいなど</li><li>賛否混在：良い点と悪い点の両方</li><li>判定保留：評価のない文章、文脈不足、分類候補が近い場合</li></ul><p>最大類似度が0.35未満、または1位と2位の差が0.025未満なら判定保留にします。これらは実験用の未校正の基準です。結果は人が見直してください。</p><div class="runtime-option"><label for="device-choice">実行方法</label><select id="device-choice"><option value="auto">自動（WebGPU優先）</option><option value="wasm">CPU / WebAssembly（遅くなる場合あり）</option></select></div><p>ページを閉じると入力と結果は失われます。準備用ファイルは、このブラウザに保存できた場合に次回も再利用します。永続保存は保証できません。</p></div></details>
   </main>
-  <footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a></footer>
+  <footer class="landing-footer"><span class="micro">NAGIPORT</span><nav class="footer-nav" aria-label="サイト"><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a><a class="legal-link" href="usecases.html">活用シーン</a><a class="legal-link" href="flow.html">ご利用の流れ</a><a class="legal-link" href="faq.html">よくある質問</a><a class="legal-link" href="data-policy.html">データの取り扱い</a><a class="legal-link" href="about.html">運営者情報</a><a class="legal-link" href="contact.html">お問い合わせ</a></nav></footer>
   <script type="module" src="app.js"></script>
   <script src="account.js"></script>
 </body>
