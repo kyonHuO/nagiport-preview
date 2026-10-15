@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja" class="landing-document">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nagiportのお客様向け分類。CSVを選び、ブラウザ内で口コミを分類して結果を確認・保存できます。">
+  <meta name="theme-color" content="#121217"><meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: https://cdn.jsdelivr.net 'wasm-unsafe-eval'; worker-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://huggingface.co https://*.huggingface.co https://*.hf.co https://*.xethub.hf.co; img-src 'self' data:; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>口コミを分類する｜Nagiport</title>
+  <link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="account.css"><link rel="stylesheet" href="classify-dark.css">
+</head>
+<body class="landing service" data-page="classify">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html">お客様ページ</a></nav></header>
+  <main id="main" class="service-main account-main account-classify">
+    <nav class="account-nav" aria-label="お客様ページ">
+      <a href="classify.html" aria-current="page">分類</a>
+      <a href="history.html">履歴</a>
+      <a href="dashboard.html">アカウント</a>
+    </nav>
+    <div class="section-heading"><p class="eyebrow">CLASSIFY</p><h1>口コミを分類する</h1><p>CSVを選ぶか文章を貼り付けて、ブラウザ内で分類します。分類は端末内で行い、外部へ送信しません。</p></div>
+
+    <section class="input-card" aria-labelledby="input-title">
+      <div class="card-heading"><h2 id="input-title">レビューを入力</h2><span id="input-counter" class="counter">0 / 100 件</span></div>
+      <label for="review-input" class="input-label">1行に1件。日本語・英語、100件まで</label>
+      <textarea id="review-input" rows="7" maxlength="100000" placeholder="音が静かで、毎日使いやすいです。&#10;使いやすいけれど、電池がすぐ切れます。" aria-describedby="input-limits input-error"></textarea>
+      <div id="file-panel" class="file-panel" hidden><div class="file-heading"><strong id="file-name"></strong><button type="button" class="text-button" id="remove-file">取り消す</button></div><div class="file-options"><label for="csv-column">本文の列</label><select id="csv-column"></select><label class="checkbox-label"><input id="csv-header" type="checkbox"> 1行目を見出しとして扱う</label></div><div id="file-preview" class="file-preview"></div></div>
+      <div class="input-tools"><label class="file-button" for="csv-file"><span aria-hidden="true">↥</span> CSVを選ぶ</label><input id="csv-file" type="file" accept=".csv,text/csv"><button type="button" class="text-button" id="use-example">例文を入れる</button><button type="button" class="text-button clear-button" id="clear-input">クリア</button></div>
+      <p id="input-limits" class="fine-print">CSVはUTF-8・1MB以下。1件2,000文字まで。長い文章は512トークンを超えると分類せずお知らせします。</p>
+      <p id="input-error" class="error-text" role="alert" hidden></p>
+      <div class="run-area"><button class="primary run-button" type="button" id="classify-input">この内容を分類する <span aria-hidden="true">→</span></button><p id="download-notice">初回は約220〜260MBを取得します。Wi-Fi・PC推奨。<br>次回は、ブラウザにファイルが残っていれば再利用します。</p></div>
+      <div id="classify-confirm" class="confirm-panel" hidden>
+        <div class="card-heading"><h3>分類前の確認</h3></div>
+        <p id="confirm-count" class="fine-print"></p>
+        <ol id="confirm-preview" class="confirm-preview"></ol>
+        <div class="input-tools confirm-actions">
+          <button type="button" id="classify-confirm-run" class="primary run-button">この内容で分類する <span aria-hidden="true">→</span></button>
+          <button type="button" id="classify-confirm-cancel" class="secondary">戻って編集する</button>
+        </div>
+      </div>
+      <div id="run-status" class="run-status" hidden aria-live="polite" aria-atomic="true"><div class="status-line"><strong id="status-title">分類エンジンを準備しています</strong><button type="button" id="cancel-run" class="text-button">中止</button></div><p id="status-detail"></p><progress id="run-progress" max="100" aria-label="準備・分類の進み具合"></progress></div>
+      <p id="run-error" class="error-text" role="alert" hidden></p><details id="error-debug" class="technical-details" hidden><summary>エラーの技術情報</summary><p id="error-diagnostic" class="fine-print"></p></details>
+      <p class="privacy-note">分類は端末内で行い、入力は外部へ送信しません。ただし「結果を保存」を押したときは、結果（本文テキスト・分類・保留理由・スコア）をアカウントに送信して保存します（元のCSVファイルは送信しません）。保存対象の取り扱いが確定するまで、実顧客データでは使わないでください。</p>
+    </section>
+
+    <section id="results" class="results-card" aria-labelledby="result-title" hidden tabindex="-1"><div class="card-heading"><div><p class="eyebrow">RESULTS</p><h2 id="result-title">分類結果 <span id="result-count"></span></h2></div><button id="export-csv" type="button" class="secondary">全件のCSVを保存 ↓</button></div><p id="result-summary" class="result-summary"></p><div id="result-filter" class="result-filter" role="group" aria-label="分類で絞り込み"></div><p class="fine-print result-caution">例文との意味の近さによる参考分類です。「近さ」は確信度・正解率ではありません。結果は人が見直してください。</p><div id="result-list" class="result-list"></div><div id="save-result" class="confirm-panel" hidden><p class="fine-print">保存されるのは分類結果（本文テキスト・分類・保留理由）です。元のCSVファイル自体は保存しません。再ログイン後も履歴から確認・再ダウンロードできます。</p><div class="input-tools confirm-actions"><button id="save-run" type="button" class="secondary">結果を保存</button></div><p id="save-status" class="form-status" role="status" aria-live="polite"></p></div></section>
+
+    <details class="technical-details"><summary>分類方法・保存について</summary><div class="details-body"><p>文章の意味を数値化する分類エンジンを、ブラウザ内で実行します。文字を768次元のベクトルに変換し、分類ごとに用意した日本語・英語の例文の平均ベクトルと、コサイン類似度を比較します。生成AIの回答や、口コミ専用に学習した分類器ではありません。</p><ul><li>好意的：満足、便利、使いやすいなど</li><li>否定的：故障、不満、使いづらいなど</li><li>賛否混在：良い点と悪い点の両方</li><li>判定保留：評価のない文章、文脈不足、分類候補が近い場合</li></ul><p>最大類似度が0.35未満、または1位と2位の差が0.025未満なら判定保留にします。これらは実験用の未校正の基準です。結果は人が見直してください。</p><div class="runtime-option"><label for="device-choice">実行方法</label><select id="device-choice"><option value="auto">自動（WebGPU優先）</option><option value="wasm">CPU / WebAssembly（遅くなる場合あり）</option></select></div><p>ページを閉じると入力と結果は失われます。準備用ファイルは、このブラウザに保存できた場合に次回も再利用します。永続保存は保証できません。</p></div></details>
+  </main>
+  <footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a></footer>
+  <script type="module" src="app.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>

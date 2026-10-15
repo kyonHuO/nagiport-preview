@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Unit tests
+        run: node --test tests/*.test.mjs
+
+      - name: Build Pages Functions
+        run: npx --yes wrangler@latest pages functions build ./functions --outdir=/tmp/fbuild
+
+      - name: Apply local D1 migrations
+        run: |
+          for f in 0001_auth 0002_jobs 0003_ratelimit 0004_jobs_token 0006_jobs_hash; do
+            npx --yes wrangler@latest d1 execute nagiport-accounts --local --file="migrations/$f.sql"
+          done
+
+      - name: Start Pages dev (workerd + local D1, https)
+        run: |
+          npx --yes wrangler@latest pages dev . --d1 DB=REPLACE_WITH_D1_DATABASE_ID --local-protocol https --port 8790 > /tmp/pages-dev.log 2>&1 &
+          for i in $(seq 1 60); do curl -sk --max-time 2 -o /dev/null https://127.0.0.1:8790/ && break; sleep 1; done
+          tail -3 /tmp/pages-dev.log
+
+      - name: API integration tests
+        run: RESET_D1=1 BASE=https://127.0.0.1:8790 bash tests/integration/api.test.sh
+
+      - name: Install puppeteer-core
+        run: npm install --no-save --no-audit --no-fund puppeteer-core@23
+
+      - name: Screen test (save flow)
+        run: BASE=https://127.0.0.1:8790 node tests/e2e/classify.screen.cjs
+
+      - name: Screen test (UI details)
+        run: BASE=https://127.0.0.1:8790 node tests/e2e/account.ui.cjs

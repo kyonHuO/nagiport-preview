@@ -38,3 +38,74 @@ Library known-reference prepare_materialize returned version 0 and initially a s
 ## Before launch
 
 Parent performs final review and publication. Complete blocked CSV file-selection UI QA, deployed-page verification and prototype comparison when materialization is available. Confirm a suitable commercial intake host and its current terms before paid transactions, plus formal service/data handling terms, delivery workflow and invoice rounding. Model, payment and production result CSV connection are not implemented. No storage-period or deletion guarantee is promised. No new account, billing agreement, OAuth, key, permissions or customer-data transfer was initiated.
+
+## Account / customer dashboard (branch `customer-account-v1`)
+
+Owner asked for a real login UI and the account-holder customer page, publish-ready for a Cloudflare custom domain (`.io` GitHub Pages is the interim host). Scope: real auth (email + password), no payment or file-transfer connection yet.
+
+- Pages: `customer.html` (login / signup), `dashboard.html` (logged-in my page: usage, orders, files, profile). Shared: `account.js`, `account.css`.
+- API: Cloudflare Pages Functions under `functions/api/auth/` (`register`, `login`, `logout`, `me`) with shared `functions/lib/auth.js`. Passwords use PBKDF2-SHA256 (120k iterations, per-user salt). Sessions are random tokens stored as SHA-256 hashes in D1; cookie is HttpOnly/Secure/SameSite=Lax, 30 days.
+- Schema: `migrations/0001_auth.sql` (tables `users`, `sessions`).
+- Preview: `?preview=1` on `customer.html` / `dashboard.html` walks the UI without a backend (banner shown, no real data). Static GitHub Pages has no Functions, so real calls need Cloudflare.
+- Tests: `node --test tests/auth.test.mjs` (7) plus existing suites pass locally (50 total).
+- Saved target (explicit): only the classification results for rows the user chose to save (row text + label + hold reason + scores). The original CSV file is never uploaded or stored; classification runs in the browser. Saves are idempotent via a client token (`migrations/0004_jobs_token.sql`), and list/detail/CSV/delete all enforce server-side ownership.
+- Not done: email verification, password reset, CSRF beyond SameSite + Origin check, privacy/terms text, payment and file delivery. These remain before handling real customer data.
+
+### Account screens (spec)
+
+`customer.html` (login / signup), `dashboard.html` (account overview), `classify.html` (dark in-browser classification with a pre-send confirmation step and result filter), `history.html` (stored jobs with server-side CSV download). Shared controller `account.js`; styles `account.css` + `classify-dark.css`. The public demo `try.html` is untouched; the confirmation step and filter activate only when their elements exist.
+
+### Deploy (Cloudflare Pages)
+
+`wrangler.toml` targets a Pages project `nagiport` served from the repo root, with a D1 binding named `DB` and `functions/_middleware.js` adding baseline security headers. Once the domain is bought, publishing is:
+
+```
+npx wrangler d1 create nagiport-accounts
+# paste the returned database_id into wrangler.toml (the committed value is a placeholder)
+npx wrangler d1 execute nagiport-accounts --file=migrations/0001_auth.sql
+npx wrangler d1 execute nagiport-accounts --file=migrations/0002_jobs.sql
+npx wrangler d1 execute nagiport-accounts --file=migrations/0003_ratelimit.sql
+npx wrangler d1 execute nagiport-accounts --file=migrations/0004_jobs_token.sql
+npx wrangler d1 execute nagiport-accounts --file=migrations/0006_jobs_hash.sql
+# confirm the target and tables before deploying
+npx wrangler d1 execute nagiport-accounts --command "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
+npx wrangler pages deploy .
+# then add the custom domain in the Pages project settings
+```
+
+The site keeps working on GitHub Pages (.io) without Functions; only the real login/DB calls need Cloudflare.
+
+### Verification
+
+- Unit: `node --test tests/core.test.mjs tests/estimate.test.mjs tests/video.test.mjs tests/auth.test.mjs` → 50 passed (7 of these are auth helpers).
+- Integration (real workerd + local D1): `tests/integration/api.test.sh` → 33 checks. Covers register/login/me, duplicate/wrong-password/malformed-JSON/cross-origin/malformed-cookie handling, job create/list/detail/CSV, idempotent double-save (same `client_token` returns the same job), delete with ownership (another user gets 404), two-account isolation, no-cookie 401, logout, post-logout 401, repeated-failed-login rate limiting (429) non-JSON body rejection, same-token-different-content rejection, delete cross-origin, concurrent-request rate limiting, and session expiry (with `RESET_D1=1` against a local D1). Setup commands are in the script header. Requires `wrangler pages dev --local-protocol https` because the session cookie is Secure.
+- Screen test (browser, real server): `tests/e2e/classify.screen.cjs` → 8 checks. Drives Chrome with puppeteer-core: unauthenticated `classify.html` redirects to login, signup reaches the dashboard, the classify page stays when logged in, the save panel appears after completion, save reports success, re-saving the same result is idempotent (history keeps one job), and the job shows up in history with a CSV link. Classification completion is simulated with the `nagiport:complete` event (the ~220MB model is not downloaded). Run with `BASE=... NODE_PATH=<node_modules with puppeteer-core> node tests/e2e/classify.screen.cjs`.
+- Screen test (UI details): `tests/e2e/account.ui.cjs` → 6 checks. Covers the confirmation step and its invalidation on edit, the result filter (via a `?debug=1` test seam that appends rows without the model), a >=44px tap target, and no horizontal overflow at 375/768/1440 on customer/classify/dashboard/history.
+- Real-model E2E: `tests/e2e/classify.realmodel.cjs` → 4 checks. Runs the actual EmbeddingGemma-2 ONNX model in the browser (WASM), classifies two rows, saves and confirms history. Heavy (~220MB first download, ~26s here); manual only, not in CI. In the local run the two sample rows were labelled 判定保留 and 否定的; label quality/threshold calibration is a separate concern.
+- Runtime constraint: workerd caps PBKDF2 at 100,000 iterations (`DEFAULT_MAX_PBKDF2_ITERATIONS`); a higher value throws. The code uses 100,000 and stores the count per user so it can be raised once the cap does (Cloudflare/workerd#7550 is still open).
+
+### Before connecting for real (decisions)
+
+`wrangler.toml` is a template: the `database_id` is a placeholder and no live resource has been touched. Before any real D1/Pages operation, confirm:
+
+1. Owner and Cloudflare account/project that will host the Pages project.
+2. The real D1 database name/id to bind as `DB`, and that migrations were applied to that exact database (verify the table list above).
+3. Data handling: customer review text is stored in D1 (`jobs` / `job_results`); privacy/terms text, retention and deletion policy are not written yet.
+4. Cost: D1/Pages usage beyond the free tier.
+
+The browser-only demo (`try.html`) stays public and needs no login; the account feature (`classify.html` + `history.html`) requires a session and stores results in D1.
+
+### GitHub-based deploy (Cloudflare Pages)
+
+Two workflows under `.github/workflows/`:
+
+- `d1-migrate.yml` (manual `workflow_dispatch`): applies migrations 0001–0004 to the production D1 database, then prints the table list.
+- `deploy-pages.yml` (on push to `main`, or manual): injects the D1 id into `wrangler.toml` and runs `wrangler pages deploy . --project-name=nagiport`.
+
+Repository secrets required:
+
+1. `CLOUDFLARE_API_TOKEN` — Pages:Edit and D1:Edit.
+2. `CLOUDFLARE_ACCOUNT_ID`.
+3. `CLOUDFLARE_D1_DATABASE_ID` — the id from `wrangler d1 create nagiport-accounts`.
+
+Order: create D1 → add secrets → run `D1 migrate` once → merge to `main` (or run `Deploy` manually) → register `nagiport.com` as a custom domain on the Pages project and let DNS/SSL issue.

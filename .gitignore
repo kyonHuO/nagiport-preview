@@ -1,0 +1,6 @@
+# Local tooling state
+.wrangler/
+node_modules/
+
+# OS / editor
+.DS_Store

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja" class="landing-document">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nagiportのお客様ページ（ログイン後）。ご利用状況、ご注文、お預かりファイルを確認できます。">
+  <meta name="theme-color" content="#121217"><meta name="referrer" content="no-referrer">
+  <title>マイページ｜Nagiport</title>
+  <link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="account.css">
+</head>
+<body class="landing service" data-page="dashboard">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html" aria-current="page">お客様ページ</a></nav></header>
+  <main id="main" class="service-main customer-main account-main">
+    <p class="preview-banner" id="preview-banner" hidden>プレビュー表示です（実データは扱いません）。デザインと画面遷移の確認用です。</p>
+
+    <nav class="account-nav" aria-label="お客様ページ">
+      <a href="classify.html">分類</a>
+      <a href="history.html">履歴</a>
+      <a href="dashboard.html" aria-current="page">アカウント</a>
+    </nav>
+
+    <p class="form-status" id="dash-error" role="status" aria-live="polite"></p>
+
+    <div class="dash-head">
+      <div class="dash-who"><p class="eyebrow">MY PAGE</p><strong id="dash-name">ゲスト</strong></div>
+      <div class="dash-actions">
+        <a href="demo.html">デモを見る</a>
+        <button type="button" id="logout-btn">ログアウト</button>
+      </div>
+    </div>
+
+    <section class="dash-card" aria-labelledby="start-title">
+      <p class="eyebrow">START</p>
+      <h2 id="start-title">口コミを分類する</h2>
+      <p>CSVを選び、本文の列を指定して分類します。分類は端末内で行い、入力は外部へ送信しません（「結果を保存」を押したときだけ、結果をアカウントに送信します）。</p>
+      <nav aria-label="分類をはじめる"><a class="primary" href="classify.html">分類をはじめる <span aria-hidden="true">→</span></a></nav>
+    </section>
+
+    <div class="dash-grid">
+      <article class="dash-card">
+        <p class="eyebrow">USAGE</p>
+        <h2>ご利用状況</h2>
+        <p>無料試用の残数・本日の消化数の表示は、実カウントの接続後に有効になります。現在は実績値ではありません。</p>
+      </article>
+
+      <article class="dash-card">
+        <p class="eyebrow">ORDERS</p>
+        <h2>ご注文・お支払い</h2>
+        <div class="dash-empty">まだご注文はありません。<br>注文・支払いは提供開始時に接続します。</div>
+      </article>
+
+      <article class="dash-card">
+        <p class="eyebrow">FILES</p>
+        <h2>お預かりファイル</h2>
+        <div class="dash-empty">受け渡し中のファイルはありません。<br>ファイルのお預かりは提供開始時に接続します。</div>
+      </article>
+
+      <article class="dash-card">
+        <p class="eyebrow">PROFILE</p>
+        <h2>アカウント情報</h2>
+        <ul class="dash-list">
+          <li><span>メールアドレス</span><span id="dash-email">-</span></li>
+          <li><span>登録日</span><span id="dash-created">-</span></li>
+        </ul>
+        <p class="service-note">メールアドレス変更・パスワード再設定は順次対応します。</p>
+      </article>
+    </div>
+  </main>
+  <footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a></footer>
+  <script src="account.js"></script>
+</body>
+</html>

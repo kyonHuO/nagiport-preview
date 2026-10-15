@@ -1,0 +1,295 @@
+/* Dark restyle of the in-browser classifier for the customer account area.
+   Overrides the light trial styles from styles.css, scoped to .account-classify. */
+
+.account-classify .input-card,
+.account-classify .results-card {
+  background: #19171f;
+  border: 1px solid #4a3956;
+  box-shadow: none;
+}
+
+.account-classify .card-heading h2 {
+  color: #f0edf4;
+}
+
+.account-classify .card-heading .eyebrow {
+  color: #a997bf;
+}
+
+.account-classify .counter {
+  color: #a89bb5;
+}
+
+.account-classify .counter.over-limit {
+  color: #f3b0c0;
+}
+
+.account-classify .input-label {
+  color: #cfc6d8;
+}
+
+.account-classify textarea {
+  background: #121217;
+  color: #f0edf4;
+  border: 1px solid #6b577c;
+}
+
+.account-classify textarea::placeholder {
+  color: #8d8199;
+}
+
+.account-classify textarea:focus {
+  background: #121217;
+  outline: 2px solid #c6afdf;
+  border-color: transparent;
+}
+
+.account-classify .file-button {
+  background: #241d2c;
+  border: 1px solid #4a3956;
+  color: #d8cbe6;
+}
+
+.account-classify .file-button:hover {
+  background: #2c2436;
+}
+
+.account-classify .text-button {
+  color: #cbb7e0;
+}
+
+.account-classify .text-button:hover {
+  color: #e6d7f3;
+}
+
+.account-classify .clear-button {
+  color: #9d90ab;
+}
+
+.account-classify select {
+  background: #121217;
+  color: #eae1f3;
+  border: 1px solid #6b577c;
+}
+
+.account-classify .file-options,
+.account-classify .checkbox-label {
+  color: #a89bb5;
+}
+
+.account-classify .file-panel {
+  background: #121217;
+  border: 1px solid #4a3956;
+}
+
+.account-classify .file-heading > strong {
+  color: #f0edf4;
+}
+
+.account-classify .file-preview {
+  color: #c8bfd2;
+}
+
+.account-classify .file-preview p {
+  border-bottom: 1px solid #2c2536;
+}
+
+.account-classify .error-text {
+  background: #2a1a20;
+  color: #f3b0c0;
+}
+
+.account-classify .run-area {
+  border-top: 1px solid #332a3d;
+}
+
+.account-classify .run-button {
+  background: #b59add;
+  color: #201629;
+}
+
+.account-classify .run-button:hover {
+  background: #c3aae5;
+}
+
+.account-classify .run-area > p,
+.account-classify .privacy-note,
+.account-classify .fine-print {
+  color: #9d90ab;
+}
+
+.account-classify .run-status {
+  background: #1d1826;
+}
+
+.account-classify .status-line strong {
+  color: #d9c6ec;
+}
+
+.account-classify .run-status p {
+  color: #b0a3bd;
+}
+
+.account-classify progress {
+  accent-color: #b59add;
+}
+
+.account-classify progress::-webkit-progress-bar {
+  background: #2a2333;
+}
+
+.account-classify progress::-webkit-progress-value {
+  background: #b59add;
+}
+
+.account-classify progress::-moz-progress-bar {
+  background: #b59add;
+}
+
+.account-classify .secondary {
+  background: #241d2c;
+  border: 1px solid #4a3956;
+  color: #d8cbe6;
+}
+
+.account-classify .secondary:hover {
+  background: #2c2436;
+}
+
+.account-classify #result-count {
+  color: #a89bb5;
+}
+
+.account-classify .result-summary {
+  color: #b8adbf;
+}
+
+.account-classify .result-caution {
+  border-bottom: 1px solid #332a3d;
+}
+
+.account-classify .result-row {
+  border-bottom: 1px solid #2c2536;
+}
+
+.account-classify .row-id {
+  color: #8d8199;
+}
+
+.account-classify .review-text {
+  color: #e6dff0;
+}
+
+.account-classify .label {
+  background: #2a2333;
+  color: #cdb8e4;
+}
+
+.account-classify .label.positive {
+  background: #1e2c28;
+  color: #9fd8c9;
+}
+
+.account-classify .label.negative {
+  background: #2f1d24;
+  color: #f0a8ba;
+}
+
+.account-classify .label.mixed {
+  background: #2a2333;
+  color: #cdb8e4;
+}
+
+.account-classify .label.hold,
+.account-classify .label.skipped {
+  background: #262230;
+  color: #b3a7bf;
+}
+
+.account-classify .score-note {
+  color: #9d90ab;
+}
+
+.account-classify .reason-note {
+  color: #a293b0;
+}
+
+.account-classify .result-evidence,
+.account-classify .technical-details {
+  color: #a89bb5;
+}
+
+.account-classify .details-body a {
+  color: #c6afdf;
+}
+
+@media (max-width: 640px) {
+  .account-classify .input-card,
+  .account-classify .results-card {
+    padding: 22px 18px;
+  }
+}
+
+/* Confirmation step and result filter (customer classify page) */
+
+.account-classify .confirm-panel {
+  margin-top: 20px;
+  padding: 18px;
+  background: #121217;
+  border: 1px solid #4a3956;
+  border-radius: 8px;
+}
+
+.account-classify .confirm-panel h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0edf4;
+}
+
+.account-classify .confirm-preview {
+  margin: 12px 0 0;
+  padding-left: 22px;
+  color: #cfc6d8;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.account-classify .confirm-preview li {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.account-classify .confirm-actions {
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.account-classify .confirm-actions .run-button {
+  margin-top: 0;
+  width: auto;
+  min-width: 234px;
+}
+
+.account-classify .result-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.account-classify .filter-chip {
+  border: 1px solid #4a3956;
+  background: #241d2c;
+  color: #cfc6d8;
+  border-radius: 20px;
+  font-size: 11px;
+  padding: 8px 14px;
+  min-height: 44px;
+}
+
+.account-classify .filter-chip[aria-pressed="true"] {
+  background: #b59add;
+  color: #201629;
+  border-color: #b59add;
+}

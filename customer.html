@@ -2,22 +2,97 @@
 <html lang="ja" class="landing-document">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nagiportのお客様向け案内。デモ、参考料金、ご利用前の確認とお問い合わせはこちら。">
+  <meta name="description" content="Nagiportのお客様ページ。アカウントの登録・ログイン、ご利用状況の確認はこちら。">
   <meta name="theme-color" content="#121217"><meta name="referrer" content="no-referrer">
   <title>お客様ページ｜Nagiport</title>
-  <link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css">
+  <link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="account.css">
 </head>
 <body class="landing service">
   <a class="skip-link" href="#main">本文へ移動</a>
   <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html" aria-current="page">お客様ページ</a></nav></header>
-  <main id="main" class="service-main customer-main">
-    <div class="section-heading"><p class="eyebrow">FOR CUSTOMERS</p><h1>お客様向けのご案内</h1><p>ご利用前の確認から、導入の相談まで。</p></div>
-    <div class="service-grid">
-      <article class="service-panel"><p class="eyebrow">01 / GET STARTED</p><h2>はじめての方へ</h2><p>デモで分類のイメージを確認し、件数に合わせた参考料金をご覧いただけます。</p><nav aria-label="ご利用前の確認"><a href="demo.html">デモを見る ↗</a><a href="estimate.html">参考料金を見る ↗</a></nav></article>
-      <article class="service-panel"><p class="eyebrow">02 / CONTACT</p><h2>導入のご相談</h2><p>用途や件数の目安をお聞かせください。メールアプリからご相談いただけます。</p><a href="mailto:nagiport.contact@gmail.com">メールで相談する ↗</a><p class="service-note">実データ・個人情報・機密情報は添付せず、用途の概要だけをお送りください。</p></article>
+  <main id="main" class="service-main customer-main account-main">
+    <div class="section-heading"><p class="eyebrow">FOR CUSTOMERS</p><h1>お客様ページ</h1><p>アカウントを登録・ログインして、ご利用状況やお預かり中のファイルを確認できます。</p></div>
+
+    <p class="preview-banner" id="preview-banner" hidden>プレビュー表示です（実データは扱いません）。デザインと画面遷移の確認用に、ログイン後のお客様ページをそのまま操作できます。</p>
+
+    <section aria-labelledby="onboarding-title">
+      <div class="section-heading"><p class="eyebrow">HOW IT WORKS</p><h2 id="onboarding-title">ご利用の流れ</h2><p>アカウントを作成してログインしたあと、アップロードから結果確認まで迷わず進めます。アップロード以降は提供開始時に接続します。</p></div>
+      <ol class="flow-grid">
+        <li><span>01</span><h3>CSVをアップロード</h3><p>本文列を選んで、分類したい口コミを送ります。</p></li>
+        <li><span>02</span><h3>処理状況を確認</h3><p>受付・処理中・完了をこのページで確認できます。</p></li>
+        <li><span>03</span><h3>結果を確認</h3><p>分類結果と保留の一覧を見て、次の一手を決めます。</p></li>
+      </ol>
+    </section>
+
+    <div class="account-shell">
+      <section class="account-form account-side" aria-labelledby="account-title">
+        <div class="account-tabs" role="tablist" aria-label="アカウント">
+          <button id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" type="button">ログイン</button>
+          <button id="tab-signup" role="tab" aria-selected="false" aria-controls="panel-signup" type="button">新規登録</button>
+        </div>
+
+        <div id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <form class="service-panel" id="login-form" novalidate>
+            <h2 id="account-title">ログイン</h2>
+            <label for="login-email">メールアドレス</label>
+            <input id="login-email" name="email" type="email" autocomplete="email" required>
+            <label for="login-password">パスワード</label>
+            <div class="password-wrap">
+              <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+              <button class="password-toggle" type="button" data-toggle="login-password" aria-label="パスワードを表示">表示</button>
+            </div>
+            <button class="primary" type="submit">ログインする</button>
+            <p class="form-status" id="login-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+          <form class="service-panel" id="signup-form" novalidate>
+            <h2>新規登録</h2>
+            <label for="signup-name">お名前（任意）</label>
+            <input id="signup-name" name="name" type="text" autocomplete="name">
+            <label for="signup-email">メールアドレス</label>
+            <input id="signup-email" name="email" type="email" autocomplete="email" required>
+            <div class="field-row">
+              <div>
+                <label for="signup-password">パスワード</label>
+                <div class="password-wrap">
+                  <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+                  <button class="password-toggle" type="button" data-toggle="signup-password" aria-label="パスワードを表示">表示</button>
+                </div>
+              </div>
+              <div>
+                <label for="signup-password2">パスワード（確認）</label>
+                <div class="password-wrap">
+                  <input id="signup-password2" name="password2" type="password" autocomplete="new-password" minlength="8" required>
+                  <button class="password-toggle" type="button" data-toggle="signup-password2" aria-label="パスワードを表示">表示</button>
+                </div>
+              </div>
+            </div>
+            <p class="field-hint">8文字以上。英字と数字を組み合わせてください。</p>
+            <button class="primary" type="submit">登録する</button>
+            <p class="form-status" id="signup-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <aside class="account-side" aria-label="ご案内">
+        <article class="service-panel"><p class="eyebrow">01 / GET STARTED</p><h2>はじめての方へ</h2><p>デモで分類のイメージを確認し、件数に合わせた参考料金をご覧いただけます。</p><nav aria-label="ご利用前の確認"><a href="demo.html">デモを見る ↗</a><a href="estimate.html">参考料金を見る ↗</a></nav></article>
+        <article class="service-panel"><p class="eyebrow">02 / CONTACT</p><h2>導入のご相談</h2><p>用途や件数の目安をお聞かせください。メールアプリからご相談いただけます。</p><a href="mailto:nagiport.contact@gmail.com">メールで相談する ↗</a><p class="service-note">実データ・個人情報・機密情報は添付せず、用途の概要だけをお送りください。</p></article>
+        <article class="service-panel"><p class="eyebrow">ACCOUNT</p><h2>ログイン後にできること</h2><ul><li>ご利用状況の確認（無料試用の消化数など）</li><li>ご注文・お預かりファイルの確認</li><li>アカウント情報の変更</li></ul><p class="service-note">注文・支払い・ファイルのお預かりは提供開始時に接続します。</p></article>
+      </aside>
     </div>
-    <section aria-labelledby="account-title"><div class="section-heading"><p class="eyebrow">ACCOUNT</p><h2 id="account-title">アカウントについて</h2></div><div class="service-panel"><h3>ログイン機能は準備中です</h3><p>アカウント登録、注文履歴、ファイルの受け渡しは、提供開始時にご案内します。このページでパスワードや顧客データを入力する必要はありません。</p><a href="services.html">現在のサービス案内を見る ↗</a></div></section>
+
+    <section aria-labelledby="faq-title">
+      <div class="section-heading"><h2 id="faq-title">よくある質問</h2></div>
+      <div class="service-faq">
+        <details><summary>何ができますか？</summary><p>口コミや投稿をCSVで整理し、好意的・否定的・賛否混在・判定保留などに分類した一覧を確認できます。分類結果は元の文章とあわせてご確認ください。</p></details>
+        <details><summary>料金はいくらですか？</summary><p>口コミ分類には<a href="estimate.html">公開済みの参考料金</a>があります。正式な請求額は用途と件数を確認して決定します。SNS分析の料金は未決定です。</p></details>
+        <details><summary>データは誰に共有されますか？</summary><p>データの取り扱いと保存・削除の条件は、提供開始前にこのページでご案内します。事前相談のメールには実データ・個人情報を添付しないでください。</p></details>
+      </div>
+    </section>
   </main>
   <footer class="landing-footer"><span class="micro">NAGIPORT</span><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a></footer>
+  <script src="account.js"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+# Cloudflare Pages configuration for the Nagiport site.
+#
+# The site is plain static HTML at the repository root; Pages Functions under
+# `functions/` provide the account API. Create the D1 database first, then put
+# its id below and run the migration.
+#
+#   npx wrangler d1 create nagiport-accounts
+#   npx wrangler d1 execute nagiport-accounts --file=migrations/0001_auth.sql
+#   npx wrangler pages deploy .
+#
+# Then attach the purchased custom domain in the Pages project settings.
+
+name = "nagiport"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nagiport-accounts"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"

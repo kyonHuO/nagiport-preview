@@ -1,0 +1,378 @@
+/* Account / login / dashboard styles. Keeps the existing Nagiport dark tone. */
+
+.account-main .section-heading {
+  margin-bottom: 22px;
+}
+
+.account-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.account-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 18px;
+  border-bottom: 1px solid #332a3d;
+}
+
+.account-tabs button {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #a89bb5;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding: 10px 14px 12px;
+  margin-bottom: -1px;
+}
+
+.account-tabs button[aria-selected="true"] {
+  color: #f0edf4;
+  border-bottom-color: #b59add;
+}
+
+.account-form .service-panel {
+  margin: 0;
+}
+
+.account-form label {
+  color: #cfc6d8;
+}
+
+.field-hint {
+  color: #8d8199;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 6px 0 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 74px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #241d2c;
+  border: 1px solid #4a3956;
+  color: #cbb7e0;
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 5px 9px;
+}
+
+.account-form button[type="submit"] {
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-status {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.8;
+  min-height: 1.8em;
+}
+
+.form-status[data-state="error"] {
+  color: #f3b0c0;
+}
+
+.form-status[data-state="ok"] {
+  color: #9fd8c9;
+}
+
+.form-status[data-state="info"] {
+  color: #b9aec6;
+}
+
+.preview-banner {
+  border: 1px solid #6e547c;
+  background: #1d1826;
+  color: #d9c6ec;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 12px 16px;
+  margin: 0 0 20px;
+}
+
+.account-side .service-panel + .service-panel {
+  margin-top: 16px;
+}
+
+.account-side ul {
+  padding-left: 20px;
+  color: #b8adbf;
+}
+
+.account-side li {
+  margin-bottom: 8px;
+}
+
+/* Dashboard */
+
+.dash-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #4a3956;
+  background: #19171f;
+  border-radius: 9px;
+  padding: 20px 24px;
+  margin-bottom: 22px;
+}
+
+.dash-who {
+  min-width: 0;
+}
+
+.dash-who .eyebrow {
+  color: #a997bf;
+  margin: 0 0 6px;
+}
+
+.dash-who strong {
+  color: #f0edf4;
+  font-size: 17px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.dash-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dash-actions button,
+.dash-actions a {
+  background: #241d2c;
+  border: 1px solid #4a3956;
+  color: #d8cbe6;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 9px 14px;
+  text-decoration: none;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dash-card {
+  border: 1px solid #4a3956;
+  background: #19171f;
+  border-radius: 9px;
+  padding: 22px 24px;
+}
+
+.dash-card h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  color: #f0edf4;
+}
+
+.dash-card .eyebrow {
+  color: #a997bf;
+  margin: 0 0 12px;
+}
+
+.dash-card p {
+  color: #b8adbf;
+  font-size: 13px;
+  line-height: 1.85;
+  margin: 0 0 10px;
+}
+
+.meter {
+  height: 8px;
+  border-radius: 6px;
+  background: #2a2333;
+  overflow: hidden;
+  margin: 14px 0 8px;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #8d70c8, #c3aae5);
+  width: 0;
+}
+
+.dash-empty {
+  border: 1px dashed #4a3956;
+  border-radius: 8px;
+  color: #9d90ab;
+  font-size: 12px;
+  line-height: 1.8;
+  padding: 18px;
+  text-align: center;
+}
+
+.dash-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dash-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #2c2536;
+  padding: 11px 0;
+  font-size: 12px;
+  color: #c8bfd2;
+}
+
+.dash-list li:first-child {
+  border-top: 0;
+}
+
+@media (max-width: 900px) {
+  .account-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dash-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Spec: account area max width and flow navigation */
+
+.account-main {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.account-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border: 1px solid #332a3d;
+  border-radius: 8px;
+  padding: 6px;
+  margin: 0 0 26px;
+  background: #19171f;
+}
+
+.account-nav a {
+  flex: 1 1 auto;
+  text-align: center;
+  text-decoration: none;
+  color: #cfc6d8;
+  font-size: 13px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-nav a[aria-current="page"] {
+  background: #2a2333;
+  color: #f0edf4;
+  box-shadow: inset 0 0 0 1px #6b577c;
+}
+
+.account-nav a:hover {
+  background: #241d2c;
+}
+
+/* Centered small auth form */
+
+.account-shell {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 26px;
+}
+
+.account-form {
+  max-width: 440px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.account-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Tap targets (>=44px) within the account area */
+
+.account-main a,
+.account-main button {
+  min-height: 44px;
+}
+
+.account-main .text-button,
+.account-main .legal-link,
+.account-main .identity {
+  min-height: 0;
+}
+
+/* Reduced motion: keep changes to short color / opacity shifts */
+
+@media (prefers-reduced-motion: reduce) {
+  .account-main *,
+  .account-main *::before,
+  .account-main *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* History page */
+
+.history-empty {
+  border: 1px dashed #4a3956;
+  border-radius: 9px;
+  padding: 34px 24px;
+  text-align: center;
+  color: #a89bb5;
+  font-size: 13px;
+  line-height: 1.9;
+  background: #19171f;
+}
+
+@media (max-width: 900px) {
+  .account-info-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+#history-list {
+  display: grid;
+  gap: 18px;
+}
+
+#history-list .dash-card {
+  margin-bottom: 0;
+}

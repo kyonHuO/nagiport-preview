@@ -1,0 +1,53 @@
+name: D1 migrate
+
+# Applies the account migrations to the production D1 database.
+# Manual only: run this once after `wrangler d1 create nagiport-accounts`.
+# Requires the same secrets as the deploy workflow.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Apply migrations
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --file=migrations/0001_auth.sql
+      - name: Apply 0002
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --file=migrations/0002_jobs.sql
+      - name: Apply 0003
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --file=migrations/0003_ratelimit.sql
+      - name: Apply 0004
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --file=migrations/0004_jobs_token.sql
+      - name: Apply 0006
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --file=migrations/0006_jobs_hash.sql
+      - name: Show tables
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute nagiport-accounts --remote --yes --command "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
