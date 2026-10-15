@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nagiport の口コミCSV分類と開発中のSNS分析。分類デモ、参考料金、提供に向けた準備状況をご案内します。">
+  <meta name="description" content="たくさんの声を、次の一手へ。Nagiportの口コミ分類デモ、SNS分析の構想、参考料金と導入相談をご案内します。">
   <meta name="theme-color" content="#121217">
   <meta name="referrer" content="no-referrer">
   <title>口コミ・SNS分類｜Nagiport</title>
@@ -11,27 +11,34 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="service.css">
 </head>
-<body class="landing">
+<body class="landing home-refined">
   <a class="skip-link" href="#main">本文へ移動</a>
-  <header class="landing-header"><a class="identity nagiport-identity" href="./" aria-label="Nagiport ホーム"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
+  <header class="landing-header"><a class="identity nagiport-identity" href="./" aria-label="Nagiport ホーム"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>声を、見渡せるかたちに。</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html">SNS分析</a><a href="estimate.html">参考料金</a><a href="customer.html">お客様ページ</a></nav></header>
   <main id="main" class="landing-main">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> NAGIPORT / SERVICE PREVIEW</p>
-      <h1>口コミも、<br>SNSも、<br><span>見渡せる。</span></h1>
-      <p class="hero-description">たくさんの声から、次に読むべき声へ。<br>口コミの分類と、SNS投稿の関連・感情分析。</p>
-      <p class="home-service-note">口コミCSV分類は提供準備中、SNS分析は開発中です。<br>現在はサービス案内とデモをご覧いただけます。</p>
-      <nav class="home-product-links" aria-label="サービスを選ぶ"><a href="services.html"><span>口コミCSV分類<small>提供準備中</small></span><span aria-hidden="true">↗</span></a><a href="sns.html"><span>SNS分類・分析<small>開発中</small></span><span aria-hidden="true">↗</span></a></nav>
-      <p class="home-service-note">店名がない投稿も、同じ名前の別のお店も。<br>自分のお店への声を見分けるためのSNS分析を開発しています。<br><a href="sns.html#store-post-examples">SNS投稿をどう整理するか見る ↗</a></p>
-      <nav class="home-service-links" aria-label="参考情報"><a href="demo.html">口コミのデモを見る</a><a href="estimate.html">口コミの参考料金</a></nav>
-      
+      <p class="eyebrow"><span class="status-dot"></span> NAGIPORT / VOICE TO VIEW</p>
+      <h1>声を整理し、<br><span>次の一手へ。</span></h1>
+      <p class="hero-description">たくさんの声を、見渡せるかたちに。<br>口コミの分類から、改善のヒントを見つける。</p>
+      <div class="home-actions"><a class="primary" href="demo.html">デモを見る <span aria-hidden="true">↗</span></a><a class="home-contact" href="services.html#contact-title">相談する <span aria-hidden="true">↗</span></a></div>
+      <nav class="home-service-links" aria-label="サービスを詳しく知る"><a href="services.html">口コミCSV分類</a><a href="sns.html">SNS分析の構想</a><a href="estimate.html">参考料金</a></nav>
+
     </div>
     <div class="hero-art" aria-hidden="true">
       <div class="art-grid"></div>
       <div class="art-window"><div class="window-bar"><span>voice_mapper.obj</span><span>＋</span></div><img src="assets/voice-knot.svg" alt="" width="700" height="670"><span class="art-caption">MANY VOICES.<br>A CLEARER VIEW.</span><span class="art-index">FIG. 001</span></div>
       <div class="art-label"><span class="status-dot"></span> TEXT → EMBEDDING → LABEL</div>
     </div>
+    <section class="home-flow" aria-labelledby="home-flow-title">
+      <div class="section-heading"><p class="eyebrow">A CLEARER VIEW / SAMPLE</p><h2 id="home-flow-title">声が、見渡せるまで。</h2><p>架空のレビューを使った表示例です。実際の判定結果ではありません。</p></div>
+      <ol class="home-flow-steps">
+        <li><span class="flow-number">01 / INPUT</span><h3>声を集める</h3><p>「接客が丁寧で、また行きたい」</p></li>
+        <li><span class="flow-number">02 / ORGANIZE</span><h3>内容を整理する</h3><p><span class="sample-label">好意的</span> 感情ごとに見渡す</p></li>
+        <li><span class="flow-number">03 / REVIEW</span><h3>次に読む声を選ぶ</h3><p>元の文章を確認し、改善や強みの発見へ。</p></li>
+      </ol>
+      <a class="home-flow-link" href="demo.html">動画でイメージを見る <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
-  <footer class="landing-footer"><span class="micro">NAGIPORT</span><p>一般受付・無料試用・決済は準備中です。</p><a class="legal-link" href="mailto:nagiport.contact@gmail.com">事前相談</a></footer>
+  <footer class="landing-footer"><span class="micro">NAGIPORT</span><p>口コミ分類のデモを公開中。サービス受付は準備中です。</p><a class="legal-link" href="mailto:nagiport.contact@gmail.com">事前相談</a></footer>
 </body>
 </html>
 

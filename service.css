@@ -50,3 +50,26 @@
 #public-data-examples .public-review-warning{margin-top:20px;padding:18px;border-left:3px solid #ceac74;background:#29211c}#public-data-examples .public-review-warning p{margin:8px 0}
 #public-data-examples .public-method{margin:24px 0;padding:18px;border:1px solid #4a3956;border-radius:8px}#public-data-examples summary{cursor:pointer}#public-data-examples summary:focus-visible{outline:3px solid #c6afdf;outline-offset:4px}
 @media(max-width:700px){#public-data-examples .public-label-guide dl{grid-template-columns:minmax(0,1fr)}#public-data-examples .public-review-card{padding:20px}#public-data-examples .public-review-text{font-size:16px;padding-left:14px}#public-data-examples .public-demo-guide{padding:18px}}
+
+/* Refined public presentation; existing artwork and classifier remain unchanged. */
+.home-refined .hero-copy h1{font-size:clamp(40px,5.4vw,78px);line-height:1.35;letter-spacing:-.055em}
+.home-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:12px;margin:30px 0 22px}
+.home-actions a{display:inline-flex;align-items:center;justify-content:space-between;gap:30px;min-height:54px;padding:15px 23px;border-radius:6px;text-decoration:none;font-size:14px;transition:background-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.home-actions .primary{background:#c6afdf;color:#201629}
+.home-actions .primary:hover{background:#dbc5ef;box-shadow:0 5px 22px #c6afdf20;transform:translateY(-2px)}
+.home-actions .home-contact{border:1px solid #6b577c;color:#e6d7ef}
+.home-actions .home-contact:hover{background:#282032;border-color:#c6afdf;transform:translateY(-2px)}
+.home-actions a:focus-visible,.home-flow-link:focus-visible{outline:3px solid #c6afdf;outline-offset:5px}
+.home-actions a:active{transform:translateY(1px);box-shadow:none}
+.home-refined .home-service-links{gap:12px 20px;line-height:1.8}
+.home-flow{grid-column:1/-1;width:100%;margin-top:55px;padding-top:34px;border-top:1px solid #37313e}
+.home-flow-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;padding:0;margin:0 0 22px}
+.home-flow-steps li{min-width:0;padding:22px;background:#19171f;border:1px solid #403348;border-radius:8px}
+.home-flow .flow-number{font:10px var(--mono);color:#c6afdf;letter-spacing:.05em}
+.home-flow h3{font-size:16px;font-weight:500;margin:16px 0 10px}
+.home-flow-steps p{font-size:12px;line-height:1.9;color:#b8adbf;margin:0;overflow-wrap:anywhere}
+.sample-label{display:inline-block;padding:3px 9px;margin-right:5px;border:1px solid #5b746d;border-radius:4px;color:#a6cfbf;background:#1c2a26}
+.home-flow-link{font-size:12px;color:#c6afdf;text-underline-offset:4px}
+.customer-main .service-panel nav{margin-top:22px}
+@media(max-width:760px){.home-refined .hero-copy h1{font-size:clamp(40px,8.8vw,64px)}.home-flow{margin-top:38px}.home-flow-steps{grid-template-columns:minmax(0,1fr)}.home-flow-steps li{padding:20px}.home-actions{gap:10px}.home-actions a{gap:18px;padding:14px 18px}.home-refined .hero-art{max-height:340px}.customer-main h1{font-size:clamp(28px,6vw,40px)}}
+@media(prefers-reduced-motion: reduce){.home-actions a{transition:none}.home-actions a:hover,.home-actions a:active{transform:none}}
