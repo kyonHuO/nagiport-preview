@@ -1,49 +1,84 @@
 <!doctype html>
 <html lang="ja" class="landing-document">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。相談から関連投稿の確認までの流れを図で紹介します。"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。相談から関連投稿の確認までの流れと、できることを紹介します。"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
 <body class="landing service light">
   <a class="skip-link" href="#main">本文へ移動</a>
   <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html" aria-current="page">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
   <main id="main" class="service-main">
     <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>相談から、<br>関連する投稿の確認まで。</h1></div>
     <p class="availability-note"><span class="status-pill">開発中・架空の例</span> 図と投稿はイメージです。SNSの自動収集は行いません。</p>
+
     <section class="sns-flow-demo" aria-labelledby="sns-flow-title">
-      <div class="section-heading"><h2 id="sns-flow-title">相談から報告までの流れ</h2><p>時間で進みます。<strong>タップすると、その段に戻ります。</strong></p></div>
+      <div class="section-heading"><h2 id="sns-flow-title">相談から報告まで、5つの段階で進みます。</h2><p>時間で進みます。タップすると、その段に戻ります。</p></div>
       <div class="sns-flow" id="sns-flow" role="tablist" aria-label="相談から報告までの流れ"></div>
-      <p class="sns-flow-caption" id="sns-flow-caption" role="status" aria-live="polite"></p>
     </section>
-    <p><a class="legal-link" href="sns-notes.html">開発メモ（想定の詳細・出典）を見る ↗</a></p>
+
+    <section aria-labelledby="sns-can-title">
+      <div class="section-heading"><h2 id="sns-can-title">SNS分析でできること</h2></div>
+      <div class="service-grid">
+        <article class="service-panel"><p class="eyebrow">01 / FIND</p><h3>関連する投稿を整理する</h3><p>自分のお店について書かれた投稿を、関連する候補としてまとめます。</p></article>
+        <article class="service-panel"><p class="eyebrow">02 / SEPARATE</p><h3>別の店舗と切り分ける</h3><p>同じ名前の別店舗などの投稿を分け、名前の一致だけに頼りません。</p></article>
+        <article class="service-panel"><p class="eyebrow">03 / REVIEW</p><h3>要確認の声を残す</h3><p>判断が難しい投稿は削除せず、人が確認する対象として残します。</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="sns-fit-title">
+      <div class="section-heading"><h2 id="sns-fit-title">こんな方に向いています</h2></div>
+      <div class="service-panel"><ul>
+        <li>SNSの投稿を、自分のお店についての声として整理したい</li>
+        <li>同名の別店舗とまちがえずに見分けたい</li>
+        <li>自動収集ではなく、持ち込みのCSVや許諾された範囲で扱いたい</li>
+      </ul></div>
+    </section>
+
+    <section aria-labelledby="sns-cant-title">
+      <div class="section-heading"><h2 id="sns-cant-title">できないこと（先にお伝えします）</h2></div>
+      <div class="service-panel"><ul>
+        <li>SNS投稿の自動収集・リアルタイム監視は行いません</li>
+        <li>画像・音声の解析、外部リンクの取得は対象外です</li>
+        <li>SNSへの自動返信は行いません</li>
+        <li>関連の判定は候補です。確定せず、人が見直す前提です</li>
+      </ul></div>
+    </section>
+
+    <section aria-labelledby="sns-faq-title">
+      <div class="section-heading"><h2 id="sns-faq-title">よくある質問</h2></div>
+      <div class="service-faq">
+        <details><summary>投稿は自動で集められますか？</summary><p>いいえ。当初はお手元の投稿本文付きCSVや、許諾された範囲が対象です。自動収集は対象外です。</p></details>
+        <details><summary>どこまで進んでいますか？</summary><p>開発中です。モデル選定と品質確認の前段階で、料金も未決定です。</p></details>
+        <details><summary>判定は確定ですか？</summary><p>いいえ。関連する候補として提示し、人が確認する前提です。文脈が足りない投稿は判断保留として残します。</p></details>
+        <details><summary>想定や出典はどこで見られますか？</summary><p><a href="sns-notes.html">開発メモ（想定の詳細・出典）</a>にまとめています。</p></details>
+      </div>
+    </section>
+
+    <section class="contact-panel"><h2>SNS分析についての相談</h2><p>用途や対象の目安をお聞かせください。メールアプリが開きます。</p><a class="primary service-cta" href="mailto:nagiport.contact@gmail.com">事前相談する <span aria-hidden="true">↗</span></a><p class="service-note">実データ・個人情報は添付せず、用途の概要だけをお送りください。</p></section>
   </main>
   <footer class="landing-footer"><span class="micro">NAGIPORT</span><nav class="footer-nav" aria-label="サイト"><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a><a class="legal-link" href="usecases.html">活用シーン</a><a class="legal-link" href="flow.html">ご利用の流れ</a><a class="legal-link" href="faq.html">よくある質問</a><a class="legal-link" href="data-policy.html">データの取り扱い</a><a class="legal-link" href="about.html">運営者情報</a><a class="legal-link" href="contact.html">お問い合わせ</a></nav></footer>
   <script>
     (function () {
       var STAGES = [
-        ["相談", "対象とゴール", "相談：対象とゴールを確認します。"],
-        ["条件設定", "すり合わせ", "条件設定：対象名・別名・地域・期間をすり合わせます。"],
-        ["検索", "規約に沿って", "検索：公開情報のみ、規約に沿って確認します（自動収集はしません）。"],
-        ["確認", "関連を見分ける", "確認：投稿が自分のお店のものかを確認します（確定せず候補として残します）。"],
-        ["報告", "整理して渡す", "報告：関連・別店舗・保留に整理して報告します。"]
+        ["相談", "対象とゴールを確認"],
+        ["条件設定", "対象名・地域・期間を決める"],
+        ["検索", "公開情報を規約に沿って"],
+        ["確認", "自分の店の声かを見分ける"],
+        ["報告", "関連・別店舗・保留に整理"]
       ];
       var host = document.getElementById("sns-flow");
-      var cap = document.getElementById("sns-flow-caption");
       var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
       var buttons = [];
-
       STAGES.forEach(function (st, i) {
         if (i > 0) { var c = document.createElement("div"); c.className = "conn"; host.appendChild(c); }
         var b = document.createElement("button");
         b.type = "button";
         b.className = "node";
         b.setAttribute("role", "tab");
-        b.innerHTML = '<span class="box"><span class="t">' + st[0] + '</span><span class="s">' + st[1] + "</span></span>";
+        b.innerHTML = '<span class="box"><span class="n">' + (i + 1) + '</span><span class="t">' + st[0] + '</span><span class="s">' + st[1] + "</span></span>";
         b.addEventListener("click", function () { select(i, true); });
         host.appendChild(b);
         buttons.push(b);
       });
       var conns = host.querySelectorAll(".conn");
-      var i = 0;
-      var timer = null;
-
+      var i = 0, timer = null;
       function paint() {
         buttons.forEach(function (b, k) {
           b.classList.toggle("active", k === i);
@@ -51,20 +86,18 @@
           b.setAttribute("aria-selected", String(k === i));
         });
         conns.forEach(function (c, k) { c.classList.toggle("lit", i > k); });
-        cap.textContent = STAGES[i][2];
       }
       function select(n, user) {
         i = (n + STAGES.length) % STAGES.length;
         paint();
-        if (user) restart();
+        if (user && !reduced) restart();
       }
       function restart() {
-        if (reduced) return;
         if (timer) clearInterval(timer);
-        timer = setInterval(function () { i = (i + 1) % STAGES.length; paint(); }, 2400);
+        timer = setInterval(function () { i = (i + 1) % STAGES.length; paint(); }, 2600);
       }
       paint();
-      restart();
+      if (!reduced) restart();
     })();
   </script>
   <script src="motion.js"></script>

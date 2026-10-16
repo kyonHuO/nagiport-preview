@@ -376,3 +376,59 @@ body.light .sns-flow .node .t,
 body.light .sns-flow .node .s {
   display: block;
 }
+
+body.light .sns-flow {
+  margin: 22px 0 8px;
+}
+
+body.light .sns-flow .node .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 30px 16px;
+  min-height: 210px;
+}
+
+body.light .sns-flow .node .n {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 6px;
+  border-radius: 50%;
+  background: #efe7f7;
+  color: #6a4f96;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.light .sns-flow .node.active .n {
+  background: #7961ba;
+  color: #fff;
+}
+
+body.light .sns-flow .node .t {
+  font-size: 22px;
+}
+
+body.light .sns-flow .node .s {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+body.light .sns-flow .conn {
+  flex: 0 0 46px;
+  height: 3px;
+}
+
+@media (max-width: 760px) {
+  body.light .sns-flow .node .box {
+    min-height: 0;
+    padding: 20px 14px;
+  }
+  body.light .sns-flow .node .t {
+    font-size: 19px;
+  }
+}
