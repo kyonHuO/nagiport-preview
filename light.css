@@ -340,3 +340,18 @@ body.light .sns-flow-caption {
     margin: 0 auto;
   }
 }
+
+body.light .demo-video.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.light .demo-video.vertical video {
+  width: auto;
+  max-width: 100%;
+  max-height: min(78vh, 720px);
+  border: 1px solid #e0d8ea;
+  border-radius: 12px;
+  background: #fff;
+}
