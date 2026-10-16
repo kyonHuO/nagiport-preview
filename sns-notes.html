@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja" class="landing-document">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。投稿の関連性、感情、不満・要望を分けて確認する流れを紹介します。"><meta name="theme-color" content="#121217"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
+<body class="landing service light">
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html" aria-current="page">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
+  <main id="main" class="service-main">
+    <div class="section-heading"><p class="eyebrow">SNS分析 / 開発メモ</p><h1>SNS分析の想定と出典</h1><p>開発中の想定と、公開データでの検証・出典をまとめています。</p></div>
+<section id="store-post-examples" aria-labelledby="example-title">
+<div class="section-heading"><p class="eyebrow">自分のお店への声を見つけるために</p><h2 id="example-title">店名が書かれていない声も、自分のお店への声かもしれない。</h2><p>「駅から港へ行く途中の、青い扉のお店」。SNSでは、店名やハッシュタグを使わずにお店のことが書かれることがあります。一方、同じ名前でも、別の街のお店についての投稿かもしれません。</p><p>Nagiportで目指しているのは、投稿本文とお店の情報を照らし合わせ、自分のお店について確認したい声、別のお店と思われる声、判断材料が足りない声を整理することです。名前の一致だけに頼らず、人が確認するための手がかりを残します。</p></div>
+<p class="availability-note"><strong>以下は、開発中の機能を説明するための架空の投稿です。</strong><br>登場する店舗・地域は架空の設定です。モデルの実行結果や実際のお客様の声ではありません。</p>
+<div class="target-example"><span class="status-pill">架空のお店の設定</span><h3>探したいのは、港町エリアの「喫茶 凪」への声</h3><p>駅から港へ向かう通りにある、青い扉の喫茶店。固めのプリンを提供しています。山あい市にも同名の別のお店がある想定です。</p><p class="service-note">場所・外観・商品を組み合わせて考えますが、特徴の一致だけでお店を確定できるとは限りません。判断が難しい投稿も削除せず、人が確認する対象として残します。</p></div>
+<div class="sns-examples">
+<article><div class="example-number">01</div><div><span class="status-pill">説明用の架空投稿</span><h3>店名も、ハッシュタグもない</h3><p class="example-post">「駅から港へ歩く途中、青い扉の喫茶店に寄った。固めのプリンがおいしかった。また行きたい」</p><ul class="example-tags"><li>自分のお店への声か、確認したい候補</li></ul><p class="service-note">場所・外観・商品が設定と重なっています。店名がなくても確認する候補にし、似た特徴のお店との取り違えに注意します。</p></div></article>
+<article><div class="example-number">02</div><div><span class="status-pill">説明用の架空投稿</span><h3>同じ名前でも、別の街のお店</h3><p class="example-post">「今日は山あい市の喫茶 凪へ。駅前店のランチ、よかった」</p><ul class="example-tags"><li>別のお店についての声と思われる候補</li></ul><p class="service-note">名前は一致しますが、場所が対象のお店と異なります。名前だけで自分のお店の口コミに数えないための例です。</p></div></article>
+<article><div class="example-number">03</div><div><span class="status-pill">説明用の架空投稿</span><h3>どの「凪」か、まだわからない</h3><p class="example-post">「凪、よかった。また行く」</p><ul class="example-tags"><li>判断材料が足りない・要確認</li></ul><p class="service-note">場所や業種などが書かれていません。自分のお店の投稿と決めつけず、追加の文脈を確認します。</p></div></article>
+<article><div class="example-number">04</div><div><span class="status-pill">説明用の架空投稿</span><h3>店名と場所が書かれている</h3><p class="example-post">「港町の喫茶 凪、プリンがおいしい。夜も営業してほしいな」</p><ul class="example-tags"><li>自分のお店についての声の候補</li></ul><p class="service-note">店名・場所・商品が設定と重なっています。お店との関係を確認したうえで、感想や営業時間への要望を読む流れを想定しています。</p></div></article>
+</div>
+</section>
+<section id="public-data-examples" aria-labelledby="public-data-examples-title" style="overflow-wrap:anywhere">
+<div class="section-heading"><p class="eyebrow">開発の参考 / 実行済みの検証</p><h2 id="public-data-examples-title">公開データで試した文章分類</h2><p>ここからは、宿泊分野に関係する文章かを分類した、実行済みの開発例です。上の「特定のお店についての投稿を見分ける」機能を検証した結果ではありません。店名のない投稿や同名店舗の識別精度を示すものでもありません。</p></div>
+<p>クラウドワーカーが作成した疑似レビューと、架空の宿泊相談を演じた対話データを使用しています。実際のSNS投稿やNagiportのお客様の声ではありません。</p><p class="service-note">見せ方を説明するために選んだ4件です。実SNSでの精度や導入実績を示すものではありません。文章は入力した単位の全文を掲載しています。</p>
+<details class="public-method"><summary>この宿泊分野の検証で使った分類</summary><ul><li>関連あり：宿泊の話題として読む候補</li><li>無関係：今回探している宿泊の話題ではない文章</li><li>情報不足：モデルが、この文章だけでは判断材料が足りないと分類したもの</li></ul><p>表示の「情報不足」はモデルが返す分類名で、運用上の「判定保留」とは別です。人の判断と食い違う場合もあります。</p></details>
+<p><a href="#public-data-sources">出典・ライセンスを見る</a></p>
+<div class="public-review-list">
+<article class="public-review-card"><header><span class="status-pill">疑似ホテルレビュー</span><h4>宿泊の体験を伝える声</h4></header><blockquote class="public-review-text">別府にある老舗の温泉旅館でした。
+桜が咲く頃に、大人2名で宿泊しました。
+泉質がとてもよく、長旅の疲れが癒やされました。
+部屋からの景観もよく、満開の桜を見ることができました。
+スタッフの方の対応はとても親切でした。
+部屋は隅々まできれいに清掃されており、快適に過ごせました
+夕食はバイキング形式でしたが、とても豪華で満足度が高かったです。
+朝食は部屋でのんびり食べることができ良かったです。
+部屋から見る夜景もきれいでした。
+チェックアウトの際のお見送りも嬉しく感じました。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>関連あり</strong></p><p>宿泊の話題として読む候補</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">疑似観光地レビュー</span><h4>観光施設についての声</h4></header><blockquote class="public-review-text">愛知県にある●●民族館は、歴史も分かるし、詳しい展示などオススメです。
+名古屋駅からバスが直行便で出ているのでアクセスもいいですし、無料バスも月に1回あるのは穴場です。
+私なら隣の●●民族の料理を出すレストランも寄るのが流れです。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>無関係</strong></p><p>今回探している宿泊の話題ではない文章</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">架空の宿泊相談</span><h4>ひと言だけでは、文脈が足りない声</h4></header><blockquote class="public-review-text">はい、禁煙で大丈夫です。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>情報不足</strong></p><p>前後の文脈を確認したい文章</p></div></article>
+<article class="public-review-card"><header><span class="status-pill">架空の宿泊相談</span><h4>確認が必要だった例</h4></header><blockquote class="public-review-text">駅から宿までのバスがあると助かります。</blockquote><div class="public-review-result"><p class="public-result-label">モデルの分類：<strong>情報不足</strong></p><p>モデルの出力と、比較用のラベルが食い違いました</p></div><div class="public-review-warning"><p><strong>宿泊の話に見えても、確認が必要です</strong></p><p>比較用のAI暫定ラベル：関連あり</p><p>確認コメント：宿までの移動条件を述べていますが、モデルは「情報不足」と分類しました。出力をそのまま正解として扱わず、確認が必要な例です。比較用ラベルもAIが作成したもので、人による正解確認は未実施です。このコメントはモデルが生成した判定理由ではありません。</p></div></article>
+</div>
+<details class="public-method"><summary>分類方法と元データの情報を見る</summary><p>2026年10月14日に実行したEmbeddingGemma FP32・既存18定義方式の保存結果です。特定の店舗・企業との関連性、感情、不満・要望は、この例では判定していません。</p><p>表示順の記録ID：F008、F007、F004、F074。出力は順に「関連あり」「無関係」「情報不足」「情報不足」です。</p></details>
+<div id="public-data-sources" class="service-panel"><h3>出典・ライセンス</h3>
+<p>例1・2：Yuta Hayashibe / Megagon Labs, Quasi Japanese Reviews（2023）。クラウドワーカー作成の疑似レビュー。CC BY 4.0。<br><a href="https://github.com/megagonlabs/quasi_japanese_reviews/tree/2a69131592b85d30b33ebb99860b101e9f3c8d27">出典：Quasi Japanese Reviews</a><br>原データ：例1 quasi_japanese_reviwes.hotel.00217、例2 quasi_japanese_reviwes.spot.00089。</p>
+<p>例3・4：Yuta Hayashibe / Megagon Labs, Accommodation Search Dialog Corpus。関連文献：Self-Contained Utterance Description Corpus for Japanese Dialog, LREC 2022, pp.1249–1255。架空の宿泊相談サービスでの役割対話。CC BY 4.0。<br><a href="https://github.com/megagonlabs/asdc/tree/f37d6575c73602adcb8ae3687520726793baa672">出典：Accommodation Search Dialog Corpus</a><br>原データ：例3 data/main/dialog/text/102.tsv の14行目、例4 data/main/dialog/text/174.tsv の16行目。</p>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">ライセンス：CC BY 4.0</a><br>加工：元データからレビュー単位・顧客発話単位で選び、評価入力と同じ単位で掲載しています。対話の前後の文脈と話者・時刻などの列は含めていません。分類結果・確認コメントはNagiport側で追加しています。掲載本文を宣伝用に書き換えていません。原著者・配布元によるNagiportへの推奨・保証を意味しません。元データはライセンスの無保証条件に従います。</p>
+</div>
+</section>
+    <section aria-labelledby="deliverables-title"><div class="section-heading"><h2 id="deliverables-title">目指している、3つの確認用データ</h2><p>結果の画面・出力は開発中です。</p></div><div class="deliverable-grid"><article class="service-panel"><p class="eyebrow">ALL ROWS</p><h3>全件結果</h3><p>元のID・本文・行順を保ち、関連性と各判定を一覧で確認。</p></article><article class="service-panel"><p class="eyebrow">REVIEW</p><h3>要確認一覧</h3><p>保留とその理由を見直し、機械の判定と人の修正を別々に記録。</p></article><article class="service-panel"><p class="eyebrow">SUMMARY</p><h3>集計</h3><p>集計の分母、保留、未処理件数を明示。結果がある範囲を確認。</p></article></div></section>
+    <section aria-labelledby="scope-title"><div class="section-heading"><h2 id="scope-title">最初は、持ち込みCSVから</h2></div><div class="service-grid"><div><h3>準備していただくもの</h3><ul><li>利用する権限のある、投稿本文付きUTF-8 CSV</li><li>対象名・別名・地域・事業説明</li><li>判断の参考例。必要に応じて投稿ID</li></ul></div><div><h3>当初の対象に含まないもの</h3><ul><li>SNS投稿の自動収集・リアルタイム監視</li><li>画像解析・投稿先の外部リンク取得</li><li>SNSへの自動返信</li></ul></div></div><p class="service-note">現在はファイルを受け付けていません。公開されている投稿でも、収集・再利用が自由とは限りません。</p></section>
+    <section class="contact-panel"><h2>口コミ分類の準備状況も見る</h2><p>無料試用の予定と、利用までの流れをご案内しています。</p><a class="primary service-cta" href="services.html">サービス案内へ <span aria-hidden="true">↗</span></a></section>
+  
+  </main>
+  <footer class="landing-footer"><span class="micro">NAGIPORT</span><nav class="footer-nav" aria-label="サイト"><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a><a class="legal-link" href="usecases.html">活用シーン</a><a class="legal-link" href="flow.html">ご利用の流れ</a><a class="legal-link" href="faq.html">よくある質問</a><a class="legal-link" href="data-policy.html">データの取り扱い</a><a class="legal-link" href="about.html">運営者情報</a><a class="legal-link" href="contact.html">お問い合わせ</a></nav></footer>
+  <script src="motion.js"></script>
+</body>
+</html>
