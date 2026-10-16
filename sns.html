@@ -6,7 +6,7 @@
   <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html" aria-current="page">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
   <main id="main" class="service-main">
     <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>相談から、<br>関連する投稿の確認まで。</h1></div>
-    <p class="availability-note"><span class="status-pill">開発中・架空の例</span> 図と投稿はイメージです。SNSの自動収集は行いません。</p>
+    <p class="availability-note"><span class="status-pill">開発中・架空の例</span> 図と投稿はイメージです。SNSの自動収集は方針として対応を進めます（対象サービスは検討中、実装は未提供）。</p>
 
     <section class="sns-flow-demo" aria-labelledby="sns-flow-title">
       <div class="section-heading"><h2 id="sns-flow-title">相談から報告まで、5つの段階で進みます。</h2><p>時間で進みます。タップすると、その段に戻ります。</p></div>
@@ -28,14 +28,13 @@
       <div class="service-panel"><ul>
         <li>SNSの投稿を、自分のお店についての声として整理したい</li>
         <li>同名の別店舗とまちがえずに見分けたい</li>
-        <li>自動収集ではなく、持ち込みのCSVや許諾された範囲で扱いたい</li>
+        <li>自動収集と、持ち込みのCSVの両方を扱いたい</li>
       </ul></div>
     </section>
 
     <section aria-labelledby="sns-cant-title">
       <div class="section-heading"><h2 id="sns-cant-title">できないこと（先にお伝えします）</h2></div>
       <div class="service-panel"><ul>
-        <li>SNS投稿の自動収集・リアルタイム監視は行いません</li>
         <li>画像・音声の解析、外部リンクの取得は対象外です</li>
         <li>SNSへの自動返信は行いません</li>
         <li>関連の判定は候補です。確定せず、人が見直す前提です</li>
@@ -45,7 +44,7 @@
     <section aria-labelledby="sns-faq-title">
       <div class="section-heading"><h2 id="sns-faq-title">よくある質問</h2></div>
       <div class="service-faq">
-        <details><summary>投稿は自動で集められますか？</summary><p>いいえ。当初はお手元の投稿本文付きCSVや、許諾された範囲が対象です。自動収集は対象外です。</p></details>
+        <details><summary>投稿は自動で集められますか？</summary><p>方針として、自動収集への対応を進めています。対象サービスと提供時期は検討中で、実装はまだ提供していません。</p></details>
         <details><summary>どこまで進んでいますか？</summary><p>開発中です。モデル選定と品質確認の前段階で、料金も未決定です。</p></details>
         <details><summary>判定は確定ですか？</summary><p>いいえ。関連する候補として提示し、人が確認する前提です。文脈が足りない投稿は判断保留として残します。</p></details>
         <details><summary>想定や出典はどこで見られますか？</summary><p><a href="sns-notes.html">開発メモ（想定の詳細・出典）</a>にまとめています。</p></details>
@@ -67,7 +66,7 @@
       var DETAILS = [
         { h:"相談の内容", doing:"対象の店名や別名、地域、期間、調べたい目的を教えてください。", out:"進め方と、確認する条件が決まります。", note:"実データや個人情報はこの段では受け取りません。" },
         { h:"検索条件のすり合わせ", doing:"対象名・別名・地域・期間・除外する店舗を一緒に決めます。", out:"検索と確認の条件が決まります。", note:"あとから変更できます。" },
-        { h:"利用規約に沿った検索", doing:"公開されている情報だけを、各サービスの規約に従って確認します。", out:"確認する候補の投稿が集まります。", note:"自動収集は行いません。持ち込みCSVや許諾された範囲が対象です。" },
+        { h:"利用規約に沿った検索", doing:"公開されている情報だけを、各サービスの規約に従って確認します。", out:"確認する候補の投稿が集まります。", note:"対象サービスは検討中です。持ち込みCSVにも対応します。" },
         { h:"関連投稿の確認", doing:"投稿が自分のお店についてのものかを確認します。", out:"自店の可能性・要確認／別の店舗の可能性／判断保留に分けます。", note:"確定せず、候補として残します。" },
         { h:"報告", doing:"関連・別店舗・保留に整理して報告します。", out:"一覧と、確認できた範囲・限界を添えます。", note:"人が見直せる形にします。" }
       ];
