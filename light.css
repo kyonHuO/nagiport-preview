@@ -432,3 +432,41 @@ body.light .sns-flow .conn {
     font-size: 19px;
   }
 }
+
+body.light .sns-detail {
+  border: 1px solid #e6e0ee;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-top: 20px;
+  box-shadow: 0 10px 40px rgba(90, 60, 140, 0.06);
+}
+
+body.light .sns-detail .lead {
+  font: 11px "SFMono-Regular", monospace;
+  letter-spacing: 0.08em;
+  color: #7a6b8f;
+  margin-bottom: 10px;
+}
+
+body.light .sns-detail h3 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  color: #1f1c26;
+}
+
+body.light .sns-detail p {
+  font-size: 15px;
+  line-height: 1.95;
+  color: #46414f;
+  margin: 0 0 8px;
+}
+
+body.light .sns-detail .out {
+  color: #5b3f86;
+}
+
+body.light .sns-detail .note {
+  font-size: 13px;
+  color: #8b8494;
+  margin-bottom: 0;
+}
