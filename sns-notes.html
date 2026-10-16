@@ -46,6 +46,13 @@
 <p><a href="https://creativecommons.org/licenses/by/4.0/">ライセンス：CC BY 4.0</a><br>加工：元データからレビュー単位・顧客発話単位で選び、評価入力と同じ単位で掲載しています。対話の前後の文脈と話者・時刻などの列は含めていません。分類結果・確認コメントはNagiport側で追加しています。掲載本文を宣伝用に書き換えていません。原著者・配布元によるNagiportへの推奨・保証を意味しません。元データはライセンスの無保証条件に従います。</p>
 </div>
 </section>
+<section aria-labelledby="collect-design"><div class="section-heading"><p class="eyebrow">開発メモ / 2026-10-16 確認</p><h2 id="collect-design">取得と保存の設計メモ</h2></div><div class="service-panel"><ul>
+      <li>Bluesky（第一候補）：公開投稿を対象語・期間・件数で取得。原投稿URLと、削除・訂正への対応を持たせる</li>
+      <li>YouTube（第二候補）：指定動画のコメントを取得。本文は30日以内の更新または削除が必要。感情分析などは派生指標ポリシーの確認・受諾が前提で、取得とAI分析を分けて進める</li>
+      <li>Googleビジネスプロフィール：管理権限を認可された店舗向け。任意の競合店の口コミ全件取得や、無期限保存・横断AI分析は前提にしない</li>
+      <li>共通：取得元・投稿ID・取得日時・更新期限・削除状態を管理する</li>
+      <li>持ち込みCSV：取得元の権利と、外部AIへ送れる範囲の確認が残る</li>
+    </ul><p class="service-note">方針は決定、実装・提供は未提供です。新しい認証・有料契約・実データ収集は行っていません。</p></div></section>
     <section aria-labelledby="deliverables-title"><div class="section-heading"><h2 id="deliverables-title">目指している、3つの確認用データ</h2><p>結果の画面・出力は開発中です。</p></div><div class="deliverable-grid"><article class="service-panel"><p class="eyebrow">ALL ROWS</p><h3>全件結果</h3><p>元のID・本文・行順を保ち、関連性と各判定を一覧で確認。</p></article><article class="service-panel"><p class="eyebrow">REVIEW</p><h3>要確認一覧</h3><p>保留とその理由を見直し、機械の判定と人の修正を別々に記録。</p></article><article class="service-panel"><p class="eyebrow">SUMMARY</p><h3>集計</h3><p>集計の分母、保留、未処理件数を明示。結果がある範囲を確認。</p></article></div></section>
     <section aria-labelledby="scope-title"><div class="section-heading"><h2 id="scope-title">最初は、持ち込みCSVから</h2></div><div class="service-grid"><div><h3>準備していただくもの</h3><ul><li>利用する権限のある、投稿本文付きUTF-8 CSV</li><li>対象名・別名・地域・事業説明</li><li>判断の参考例。必要に応じて投稿ID</li></ul></div><div><h3>当初の対象に含まないもの</h3><ul><li>SNS投稿の自動収集・リアルタイム監視（方針として対応を進める。対象サービスは検討中）</li><li>画像解析・投稿先の外部リンク取得</li><li>SNSへの自動返信</li></ul></div></div><p class="service-note">現在はファイルを受け付けていません。公開されている投稿でも、収集・再利用が自由とは限りません。</p></section>
     <section class="contact-panel"><h2>口コミ分類の準備状況も見る</h2><p>無料試用の予定と、利用までの流れをご案内しています。</p><a class="primary service-cta" href="services.html">サービス案内へ <span aria-hidden="true">↗</span></a></section>
