@@ -355,3 +355,24 @@ body.light .demo-video.vertical video {
   border-radius: 12px;
   background: #fff;
 }
+
+body.light .sns-flow .node {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+body.light .sns-flow .node:focus-visible {
+  outline: 3px solid #8970c9;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+body.light .sns-flow .node .box,
+body.light .sns-flow .node .t,
+body.light .sns-flow .node .s {
+  display: block;
+}

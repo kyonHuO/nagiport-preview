@@ -1,45 +1,72 @@
 <!doctype html>
 <html lang="ja" class="landing-document">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。投稿の関連性、感情、不満・要望を分けて確認する流れを紹介します。"><meta name="theme-color" content="#121217"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。相談から関連投稿の確認までの流れを図で紹介します。"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
 <body class="landing service light">
   <a class="skip-link" href="#main">本文へ移動</a>
   <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html" aria-current="page">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
   <main id="main" class="service-main">
     <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>相談から、<br>関連する投稿の確認まで。</h1></div>
     <p class="availability-note"><span class="status-pill">開発中・架空の例</span> 図と投稿はイメージです。SNSの自動収集は行いません。</p>
-    <figure class="demo-video vertical"><video controls muted playsinline preload="metadata" poster="assets/nagiport-sns-concept-poster.jpg"><source src="assets/nagiport-sns-concept-frik-v1.mp4" type="video/mp4">お使いのブラウザは動画に対応していません。</video><figcaption class="service-note">相談 → 条件設定 → 検索 → 確認 → 報告 の各段を、図のノードと接続線を順に点灯させて示す構想アニメーションです（開発中・架空の投稿・自動収集は行いません）。</figcaption></figure>
     <section class="sns-flow-demo" aria-labelledby="sns-flow-title">
-      <div class="section-heading"><h2 id="sns-flow-title">相談から報告までの流れ</h2></div>
-      <div class="sns-flow" id="sns-flow"></div>
+      <div class="section-heading"><h2 id="sns-flow-title">相談から報告までの流れ</h2><p>時間で進みます。<strong>タップすると、その段に戻ります。</strong></p></div>
+      <div class="sns-flow" id="sns-flow" role="tablist" aria-label="相談から報告までの流れ"></div>
       <p class="sns-flow-caption" id="sns-flow-caption" role="status" aria-live="polite"></p>
     </section>
     <p><a class="legal-link" href="sns-notes.html">開発メモ（想定の詳細・出典）を見る ↗</a></p>
   </main>
   <footer class="landing-footer"><span class="micro">NAGIPORT</span><nav class="footer-nav" aria-label="サイト"><a class="legal-link" href="./">ホーム</a><a class="legal-link" href="services.html">サービス</a><a class="legal-link" href="usecases.html">活用シーン</a><a class="legal-link" href="flow.html">ご利用の流れ</a><a class="legal-link" href="faq.html">よくある質問</a><a class="legal-link" href="data-policy.html">データの取り扱い</a><a class="legal-link" href="about.html">運営者情報</a><a class="legal-link" href="contact.html">お問い合わせ</a></nav></footer>
   <script>
-  (function(){
-    var STAGES=[["相談","対象とゴール"],["条件設定","すり合わせ"],["検索","規約に沿って"],["確認","関連を見分ける"],["報告","整理して渡す"]];
-    var CAPS=["相談：対象とゴールを確認します。","条件設定：対象名・別名・地域・期間をすり合わせます。","検索：公開情報のみ、規約に沿って確認します（自動収集はしません）。","確認：投稿が自分のお店のものかを確認します（確定せず候補として残します）。","報告：関連・別店舗・保留に整理して報告します。"];
-    var host=document.getElementById("sns-flow");
-    var cap=document.getElementById("sns-flow-caption");
-    STAGES.forEach(function(st,i){
-      if(i>0){var c=document.createElement("div");c.className="conn";host.appendChild(c);}
-      var n=document.createElement("div");n.className="node";
-      n.innerHTML='<div class="box"><div class="t">'+st[0]+'</div><div class="s">'+st[1]+'</div></div>';
-      host.appendChild(n);
-    });
-    var nodes=host.querySelectorAll(".node"),conns=host.querySelectorAll(".conn"),i=0;
-    function paint(){
-      nodes.forEach(function(n,k){n.classList.toggle("active",k===i);n.classList.toggle("done",k<i);});
-      conns.forEach(function(c,k){c.classList.toggle("lit",i>k);});
-      cap.textContent=CAPS[i];
-    }
-    paint();
-    if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
-      setInterval(function(){ i=(i+1) % STAGES.length; paint(); }, 2400);
-    }
-  })();
-</script>
+    (function () {
+      var STAGES = [
+        ["相談", "対象とゴール", "相談：対象とゴールを確認します。"],
+        ["条件設定", "すり合わせ", "条件設定：対象名・別名・地域・期間をすり合わせます。"],
+        ["検索", "規約に沿って", "検索：公開情報のみ、規約に沿って確認します（自動収集はしません）。"],
+        ["確認", "関連を見分ける", "確認：投稿が自分のお店のものかを確認します（確定せず候補として残します）。"],
+        ["報告", "整理して渡す", "報告：関連・別店舗・保留に整理して報告します。"]
+      ];
+      var host = document.getElementById("sns-flow");
+      var cap = document.getElementById("sns-flow-caption");
+      var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var buttons = [];
+
+      STAGES.forEach(function (st, i) {
+        if (i > 0) { var c = document.createElement("div"); c.className = "conn"; host.appendChild(c); }
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "node";
+        b.setAttribute("role", "tab");
+        b.innerHTML = '<span class="box"><span class="t">' + st[0] + '</span><span class="s">' + st[1] + "</span></span>";
+        b.addEventListener("click", function () { select(i, true); });
+        host.appendChild(b);
+        buttons.push(b);
+      });
+      var conns = host.querySelectorAll(".conn");
+      var i = 0;
+      var timer = null;
+
+      function paint() {
+        buttons.forEach(function (b, k) {
+          b.classList.toggle("active", k === i);
+          b.classList.toggle("done", k < i);
+          b.setAttribute("aria-selected", String(k === i));
+        });
+        conns.forEach(function (c, k) { c.classList.toggle("lit", i > k); });
+        cap.textContent = STAGES[i][2];
+      }
+      function select(n, user) {
+        i = (n + STAGES.length) % STAGES.length;
+        paint();
+        if (user) restart();
+      }
+      function restart() {
+        if (reduced) return;
+        if (timer) clearInterval(timer);
+        timer = setInterval(function () { i = (i + 1) % STAGES.length; paint(); }, 2400);
+      }
+      paint();
+      restart();
+    })();
+  </script>
   <script src="motion.js"></script>
 </body>
 </html>
