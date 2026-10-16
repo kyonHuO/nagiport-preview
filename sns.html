@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="ja" class="landing-document">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。相談から関連投稿の確認までの流れと、できることを紹介します。"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="開発中のNagiport SNS分析。相談から関連投稿の確認までの流れ、できること、対象サービスの検討状況を紹介します。"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><title>SNS投稿分析・開発中｜Nagiport</title><link rel="icon" href="assets/favicon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="service.css"><link rel="stylesheet" href="motion.css"><link rel="stylesheet" href="light.css"></head>
 <body class="landing service light">
   <a class="skip-link" href="#main">本文へ移動</a>
   <header class="landing-header"><a class="identity nagiport-identity" href="./"><span class="identity-mark" aria-hidden="true">▤</span><span>Nagiport<small>口コミ・SNSの投稿を分類</small></span></a><nav class="site-nav" aria-label="メインナビゲーション"><a href="services.html">サービス</a><a href="sns.html" aria-current="page">SNS分析</a><a href="estimate.html">参考料金</a></nav></header>
   <main id="main" class="service-main">
-    <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>相談から、<br>関連する投稿の確認まで。</h1></div>
+    <div class="section-heading"><p class="eyebrow">SOCIAL LISTENING / 開発中</p><h1>相談から、<br>関連する投稿の確認まで。</h1><p>自分のお店についての声を、関連性から整理する機能を開発しています。</p></div>
     <p class="availability-note"><span class="status-pill">開発中・架空の例</span> 図と投稿はイメージです。SNSの自動収集は方針として対応を進めます（対象サービスは検討中、実装は未提供）。</p>
 
     <section class="sns-flow-demo" aria-labelledby="sns-flow-title">
@@ -15,11 +15,43 @@
     </section>
 
     <section aria-labelledby="sns-can-title">
-      <div class="section-heading"><h2 id="sns-can-title">SNS分析でできること</h2></div>
+      <div class="section-heading"><h2 id="sns-can-title">SNS分析でできること</h2><p>投稿を、自分のお店についての声かどうかから整理します。</p></div>
       <div class="service-grid">
         <article class="service-panel"><p class="eyebrow">01 / FIND</p><h3>関連する投稿を整理する</h3><p>自分のお店について書かれた投稿を、関連する候補としてまとめます。</p></article>
-        <article class="service-panel"><p class="eyebrow">02 / SEPARATE</p><h3>別の店舗と切り分ける</h3><p>同じ名前の別店舗などの投稿を分け、名前の一致だけに頼りません。</p></article>
+        <article class="service-panel"><p class="eyebrow">02 / SEPARATE</p><h3>別の店舗と切り分ける</h3><p>同じ名前の別店舗などの投稿を分けます。名前の一致だけに頼りません。</p></article>
         <article class="service-panel"><p class="eyebrow">03 / REVIEW</p><h3>要確認の声を残す</h3><p>判断が難しい投稿は削除せず、人が確認する対象として残します。</p></article>
+        <article class="service-panel"><p class="eyebrow">04 / READ</p><h3>感情・不満・要望を分ける</h3><p>関連を確認したうえで、好意的・否定的・要望などの観点で整理します。</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="sns-usecase-title">
+      <div class="section-heading"><h2 id="sns-usecase-title">活用シーン（想定例）</h2><p>ここに挙げるのは想定例です。実際の導入事例ではありません。</p></div>
+      <div class="service-grid">
+        <article class="service-panel"><h3>新店舗の評判を把握する</h3><p>開店前後の投稿を集め、良かった点と気になる点を分けて見ます。</p></article>
+        <article class="service-panel"><h3>改善の要望を拾う</h3><p>営業時間やメニューへの要望を、投稿から抽出します。</p></article>
+        <article class="service-panel"><h3>別店舗の投稿を分ける</h3><p>同名の別店舗についての投稿を、自分のお店の声に数えないようにします。</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="sns-sources-title">
+      <div class="section-heading"><h2 id="sns-sources-title">対象になり得るサービス（検討中）</h2><p>取得方法と規約を確認してから決めます。以下は候補です。</p></div>
+      <div class="service-panel"><ul>
+        <li>自前データ（持ち込みCSV、問い合わせ、アンケート）— 規約上の問題がなく、すぐ対象にできる</li>
+        <li>Googleビジネスプロフィール（クチコミ）— 公式APIあり</li>
+        <li>YouTube（コメント）— 公式APIあり（取得量の上限あり）</li>
+        <li>Bluesky / Threads — 公開APIあり</li>
+        <li>Instagram / Facebook — 公式APIあり（ビジネスアカウント前提、検索に制限）</li>
+        <li>X（旧Twitter）— 公式APIは有料で高額。規約で保存・再配布に制限（要検討）</li>
+        <li>食べログ・ホットペッパー等 — 公式APIなし。スクレイピングは規約違反のおそれがあるため原則対象外</li>
+      </ul></div>
+    </section>
+
+    <section aria-labelledby="sns-prep-title">
+      <div class="section-heading"><h2 id="sns-prep-title">準備していただくもの</h2></div>
+      <div class="service-grid">
+        <article class="service-panel"><h3>対象のお店の情報</h3><p>対象名・別名・地域・事業説明。</p></article>
+        <article class="service-panel"><h3>調べたい目的と期間</h3><p>何を知りたいか、対象とする期間。</p></article>
+        <article class="service-panel"><h3>扱えるデータの範囲</h3><p>利用する権限のあるデータに限ります。</p></article>
       </div>
     </section>
 
@@ -38,15 +70,23 @@
         <li>画像・音声の解析、外部リンクの取得は対象外です</li>
         <li>SNSへの自動返信は行いません</li>
         <li>関連の判定は候補です。確定せず、人が見直す前提です</li>
+        <li>規約で認められない取得は行いません</li>
       </ul></div>
+    </section>
+
+    <section aria-labelledby="sns-data-title">
+      <div class="section-heading"><h2 id="sns-data-title">データの取り扱い</h2></div>
+      <div class="service-panel"><p>取り込んだ投稿と分類結果は非公開で保管し、第三者へ提供しません（法令に基づく場合を除く）。保存する範囲と期間は<a href="data-policy.html">データの取り扱い</a>にまとめています。</p><p class="service-note">用途の概要は<a href="contact.html">お問い合わせ</a>から。実データや個人情報は添付しないでください。</p></div>
     </section>
 
     <section aria-labelledby="sns-faq-title">
       <div class="section-heading"><h2 id="sns-faq-title">よくある質問</h2></div>
       <div class="service-faq">
         <details><summary>投稿は自動で集められますか？</summary><p>方針として、自動収集への対応を進めています。対象サービスと提供時期は検討中で、実装はまだ提供していません。</p></details>
+        <details><summary>どのサービスに対応しますか？</summary><p>公式APIの有無と規約を確認して決めます。候補は上の「対象になり得るサービス」にまとめています。</p></details>
         <details><summary>どこまで進んでいますか？</summary><p>開発中です。モデル選定と品質確認の前段階で、料金も未決定です。</p></details>
         <details><summary>判定は確定ですか？</summary><p>いいえ。関連する候補として提示し、人が確認する前提です。文脈が足りない投稿は判断保留として残します。</p></details>
+        <details><summary>持ち込みCSVでも使えますか？</summary><p>はい。自動収集とあわせて、投稿本文付きのCSVにも対応する方針です。</p></details>
         <details><summary>想定や出典はどこで見られますか？</summary><p><a href="sns-notes.html">開発メモ（想定の詳細・出典）</a>にまとめています。</p></details>
       </div>
     </section>
@@ -59,19 +99,19 @@
       var STAGES = [
         ["相談", "対象とゴールを確認"],
         ["条件設定", "対象名・地域・期間を決める"],
-        ["検索", "公開情報を規約に沿って"],
+        ["収集", "公開情報を規約に沿って"],
         ["確認", "自分の店の声かを見分ける"],
         ["報告", "関連・別店舗・保留に整理"]
       ];
       var DETAILS = [
-        { h:"相談の内容", doing:"対象の店名や別名、地域、期間、調べたい目的を教えてください。", out:"進め方と、確認する条件が決まります。", note:"実データや個人情報はこの段では受け取りません。" },
-        { h:"検索条件のすり合わせ", doing:"対象名・別名・地域・期間・除外する店舗を一緒に決めます。", out:"検索と確認の条件が決まります。", note:"あとから変更できます。" },
-        { h:"利用規約に沿った検索", doing:"公開されている情報だけを、各サービスの規約に従って確認します。", out:"確認する候補の投稿が集まります。", note:"対象サービスは検討中です。持ち込みCSVにも対応します。" },
-        { h:"関連投稿の確認", doing:"投稿が自分のお店についてのものかを確認します。", out:"自店の可能性・要確認／別の店舗の可能性／判断保留に分けます。", note:"確定せず、候補として残します。" },
-        { h:"報告", doing:"関連・別店舗・保留に整理して報告します。", out:"一覧と、確認できた範囲・限界を添えます。", note:"人が見直せる形にします。" }
+        { h:"相談の内容", you:"対象の店名や別名、地域、期間、調べたい目的", we:"条件と進め方を決めます。", out:"進め方と、確認する条件が決まります。", note:"実データや個人情報はこの段では受け取りません。" },
+        { h:"条件のすり合わせ", you:"対象名・別名・地域・期間・除外する店舗", we:"検索と確認の条件を一緒に決めます。", out:"検索の条件が確定します。", note:"あとから変更できます。" },
+        { h:"規約に沿った収集", you:"扱えるデータの範囲の確認", we:"公開情報だけを、各サービスの規約に従って取得します。", out:"確認する候補の投稿が集まります。", note:"対象サービスは検討中です。持ち込みCSVにも対応します。" },
+        { h:"関連投稿の確認", you:"候補の見直し（必要に応じて）", we:"投稿が自分のお店についてのものかを確認します。", out:"自店の可能性・要確認／別の店舗の可能性／判断保留に分けます。", note:"確定せず、候補として残します。" },
+        { h:"報告", you:"結果の受け取りと見直し", we:"関連・別店舗・保留に整理します。", out:"一覧と、確認できた範囲・限界を添えます。", note:"人が見直せる形にします。" }
       ];
-      var detail = document.getElementById("sns-detail");
       var host = document.getElementById("sns-flow");
+      var detail = document.getElementById("sns-detail");
       var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
       var buttons = [];
       STAGES.forEach(function (st, i) {
@@ -95,7 +135,9 @@
         });
         conns.forEach(function (c, k) { c.classList.toggle("lit", i > k); });
         var d = DETAILS[i];
-        detail.innerHTML = '<p class="lead">STEP ' + String(i + 1).padStart(2, "0") + ' / 5</p><h3>' + d.h + '</h3><p>' + d.doing + '</p><p class="out">' + d.out + '</p><p class="note">' + d.note + '</p>';
+        detail.innerHTML = '<p class="lead">STEP ' + String(i + 1).padStart(2, "0") + ' / 5</p><h3>' + d.h + '</h3>'
+          + '<dl><dt>お客様がすること</dt><dd>' + d.you + '</dd><dt>こちらがすること</dt><dd>' + d.we + '</dd><dt>結果</dt><dd>' + d.out + '</dd></dl>'
+          + '<p class="note">' + d.note + '</p>';
       }
       function select(n, user) {
         i = (n + STAGES.length) % STAGES.length;
@@ -104,7 +146,7 @@
       }
       function restart() {
         if (timer) clearInterval(timer);
-        timer = setInterval(function () { i = (i + 1) % STAGES.length; paint(); }, 2600);
+        timer = setInterval(function () { i = (i + 1) % STAGES.length; paint(); }, 5000);
       }
       paint();
       if (!reduced) restart();

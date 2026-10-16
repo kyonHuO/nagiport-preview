@@ -470,3 +470,32 @@ body.light .sns-detail .note {
   color: #8b8494;
   margin-bottom: 0;
 }
+
+body.light .sns-detail dl {
+  display: grid;
+  grid-template-columns: minmax(110px, 140px) minmax(0, 1fr);
+  gap: 8px 18px;
+  margin: 14px 0 10px;
+}
+
+body.light .sns-detail dt {
+  font-size: 13px;
+  color: #7a6b8f;
+}
+
+body.light .sns-detail dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #46414f;
+}
+
+@media (max-width: 640px) {
+  body.light .sns-detail dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+  body.light .sns-detail dt {
+    margin-top: 8px;
+  }
+}
